@@ -1,0 +1,682 @@
+Quiero que rediseñes el frontend actual de **La Gráfica**.
+
+IMPORTANTE: NO quiero que simplemente cambies colores o tipografías.
+
+Quiero que hagas una **revisión visual profunda del diseño actual** y lo acerques mucho más a la imagen de referencia que te adjunto.
+
+La imagen de referencia representa exactamente el tipo de estética que quiero conseguir.
+
+## OBJETIVO VISUAL
+
+La web debe sentirse como una **gráfica moderna, creativa y premium**, con una estética editorial/publicitaria.
+
+Quiero que al entrar se vea inmediatamente:
+
+* moderna
+* llamativa
+* profesional
+* visual
+* elegante
+* creativa
+* con personalidad
+
+No quiero una landing page genérica de una empresa.
+
+Quiero que parezca una página diseñada específicamente para una **gráfica profesional**.
+
+---
+
+# REFERENCIA VISUAL
+
+Utilizá la imagen adjunta como referencia principal.
+
+NO hace falta copiar literalmente las fotografías.
+
+Lo que sí quiero conservar de la referencia es:
+
+* estructura
+* proporciones
+* jerarquía visual
+* distribución
+* contraste
+* tamaños de títulos
+* composición
+* espaciado
+* estilo de tarjetas
+* estética de las secciones
+* tratamiento de botones
+* alternancia entre fondos oscuros y claros
+* sensación general de la página
+
+La referencia tiene una estética mucho más cuidada que el diseño actual.
+
+Quiero acercarme visualmente a ella.
+
+---
+
+# 1. NAVBAR
+
+La navbar debe ser compacta y elegante.
+
+Fondo:
+
+`#1A1A1A`
+
+A la izquierda:
+
+**La Gráfica**
+
+con espacio para colocar posteriormente el logo real.
+
+Menú horizontal:
+
+INICIO
+SERVICIOS
+TRABAJOS
+PRODUCTOS
+NOSOTROS
+CONTACTO
+
+A la derecha:
+
+BOTÓN NARANJA:
+
+**PEDÍ TU PRESUPUESTO**
+
+El botón debe destacar claramente.
+
+No hacer una navbar demasiado alta.
+
+Debe ocupar poco espacio vertical.
+
+---
+
+# 2. HERO — REDISEÑAR COMPLETAMENTE
+
+Esta es una de las partes más importantes.
+
+Quiero que el Hero se parezca mucho más a la referencia.
+
+Utilizar una composición de dos grandes áreas:
+
+### IZQUIERDA
+
+Título extremadamente grande:
+
+**HACEMOS QUE
+TUS IDEAS
+SE VEAN**
+
+Utilizar crema/blanco para el texto principal.
+
+Destacar:
+
+**SE VEAN**
+
+en naranja `#FF6B00`.
+
+Debajo:
+
+"Soluciones gráficas de calidad para potenciar tu marca, tu negocio y tus proyectos."
+
+Después dos botones:
+
+**PEDÍ TU PRESUPUESTO**
+
+**VER TRABAJOS**
+
+Debajo de los botones agregar tres pequeños indicadores:
+
+✓ Calidad premium
+✓ Atención personalizada
+✓ Entrega a tiempo
+
+### DERECHA
+
+Crear una composición visual grande relacionada con el mundo gráfico.
+
+Puede contener mockups o imágenes de:
+
+* tarjetas
+* carteles
+* stickers
+* packaging
+* flyers
+* impresión
+* vinilos
+* productos gráficos
+
+PERO:
+
+NO utilizar imágenes deformadas.
+
+NO utilizar fotografías borrosas.
+
+NO utilizar texto ilegible generado dentro de imágenes.
+
+NO utilizar imágenes que parezcan errores de IA.
+
+Si no existen fotografías reales, utilizar placeholders elegantes.
+
+La composición debe parecer intencional y profesional.
+
+El lado derecho debe tener bastante presencia visual.
+
+---
+
+# 3. FONDO DEL HERO
+
+El fondo debe ser oscuro.
+
+Utilizar:
+
+`#1A1A1A`
+
+o prácticamente negro.
+
+Agregar pequeños detalles gráficos en naranja:
+
+* líneas
+* formas
+* círculos
+* pequeños elementos relacionados con impresión
+
+Pero de manera muy sutil.
+
+No llenar todo de efectos.
+
+---
+
+# 4. SERVICIOS
+
+Después del Hero debe aparecer:
+
+Pequeño texto naranja:
+
+**LO QUE HACEMOS**
+
+Título grande:
+
+**SERVICIOS**
+
+La sección debe seguir la estética de la referencia.
+
+Crear 6 tarjetas.
+
+Las tarjetas deben ser horizontales/verticales según corresponda, pero visualmente compactas.
+
+Servicios:
+
+1. IMPRESIÓN
+2. CARTELERÍA
+3. VINILOS & PLOTEOS
+4. STICKERS
+5. DISEÑO GRÁFICO
+6. PACKAGING
+
+Cada tarjeta:
+
+* imagen
+* pequeño icono naranja
+* título
+* descripción corta
+
+Las tarjetas deben tener:
+
+* fondo ligeramente diferente al fondo principal
+* borde sutil
+* border-radius moderado
+* hover elegante
+
+NO hacer tarjetas gigantes que ocupen toda la pantalla.
+
+Quiero que se vean varias simultáneamente, como en la referencia.
+
+---
+
+# 5. TRABAJOS RECIENTES
+
+Esta sección debe ser MUY visual.
+
+Texto pequeño:
+
+**NUESTROS TRABAJOS**
+
+Título:
+
+**TRABAJOS RECIENTES**
+
+Agregar filtros pequeños tipo pills:
+
+TODOS
+IMPRESIÓN
+CARTELERÍA
+VINILOS
+STICKERS
+DISEÑO
+PACKAGING
+
+Debajo:
+
+Crear una galería tipo editorial/masonry.
+
+IMPORTANTE:
+
+No quiero una cuadrícula perfectamente uniforme de tarjetas iguales.
+
+Quiero cierta variación visual en tamaños y proporciones, como en la imagen de referencia.
+
+Por ejemplo:
+
+* una imagen grande
+* dos pequeñas
+* otra horizontal
+* otra vertical
+* etc.
+
+Debe parecer un portfolio profesional.
+
+---
+
+# 6. IMÁGENES DEL PORTFOLIO
+
+No inventar imágenes defectuosas.
+
+Si no hay imágenes reales disponibles, utilizar placeholders de alta calidad.
+
+Los placeholders deben:
+
+* tener buena composición
+* mantener proporciones
+* no tener texto extraño
+* no tener logos incorrectos
+* no tener manos deformadas
+* no tener productos deformados
+* no tener elementos visualmente absurdos
+
+Es preferible un placeholder limpio y elegante antes que una imagen artificial de mala calidad.
+
+Preparar toda la estructura para que posteriormente podamos reemplazar fácilmente las imágenes por trabajos reales de La Gráfica.
+
+---
+
+# 7. SECCIÓN PRODUCTOS
+
+Después de los trabajos quiero una sección clara con fondo:
+
+`#FFF7ED`
+
+Esto es importante.
+
+La página debe alternar:
+
+NEGRO → CREMA → NEGRO → CREMA
+
+para generar ritmo visual.
+
+Título:
+
+**PRODUCTOS DESTACADOS**
+
+Subtítulo:
+
+**LO MÁS PEDIDO**
+
+Mostrar 4 productos.
+
+Ejemplo:
+
+* Tarjetas personales
+* Volantes
+* Stickers
+* Banners
+
+Las tarjetas deben tener fondo claro y fotografías/mockups limpios.
+
+Cada tarjeta:
+
+imagen
+nombre
+descripción/precio placeholder
+
+Agregar pequeño botón circular naranja.
+
+---
+
+# 8. SECCIÓN PRESUPUESTO
+
+Después de productos volver a fondo oscuro.
+
+Esta sección debe ser visualmente muy importante.
+
+Título grande:
+
+**¿QUERÉS UN
+PRESUPUESTO RÁPIDO?**
+
+Crear el formulario a la derecha.
+
+Campos:
+
+1. ¿Qué necesitás?
+2. Cantidad
+3. Medidas
+4. Material
+5. Impresión
+6. Detalles adicionales
+
+Botón grande naranja:
+
+**ENVIAR POR WHATSAPP**
+
+Esta parte es solamente FRONTEND por ahora.
+
+NO implementar todavía backend.
+
+NO implementar base de datos.
+
+NO implementar WhatsApp real.
+
+Pero dejar los componentes correctamente preparados para conectar posteriormente.
+
+---
+
+# 9. NOSOTROS
+
+Crear otra sección clara con fondo crema.
+
+Título:
+
+**MÁS QUE IMPRESIONES,
+CREAMOS SOLUCIONES**
+
+A la izquierda:
+
+pequeño texto descriptivo.
+
+A la derecha:
+
+4 indicadores:
+
++10 AÑOS DE EXPERIENCIA
+CALIDAD GARANTIZADA
+ATENCIÓN PERSONALIZADA
+ENTREGAS A TIEMPO
+
+Usar iconos simples y elegantes.
+
+---
+
+# 10. CONTACTO
+
+Crear una sección oscura.
+
+Título:
+
+**HABLEMOS DE TU PROYECTO**
+
+Mostrar:
+
+WhatsApp
+Teléfono
+Instagram
+Dirección
+Horarios
+
+Agregar CTA:
+
+**HABLÁ CON NOSOTROS**
+
+---
+
+# 11. FOOTER
+
+Footer oscuro y limpio.
+
+Logo/nombre:
+
+**La Gráfica**
+
+Columnas:
+
+ENLACES
+
+Inicio
+Servicios
+Trabajos
+Productos
+Nosotros
+Contacto
+
+CONTACTO
+
+WhatsApp
+Teléfono
+Email
+
+UBICACIÓN
+
+Dirección
+Horarios
+
+Redes sociales.
+
+---
+
+# PALETA
+
+Utilizar exclusivamente como base:
+
+Naranja:
+
+`#FF6B00`
+
+Rojo/naranja:
+
+`#FF3D00`
+
+Negro:
+
+`#1A1A1A`
+
+Crema:
+
+`#FFF7ED`
+
+Durazno:
+
+`#FFD9B3`
+
+El naranja debe utilizarse estratégicamente.
+
+NO convertir toda la página en naranja.
+
+El negro debe dominar las secciones principales.
+
+El crema debe utilizarse para crear contraste.
+
+---
+
+# TIPOGRAFÍA
+
+Quiero títulos mucho más grandes y contundentes.
+
+Especialmente:
+
+Hero
+Servicios
+Trabajos
+Productos
+Presupuesto
+
+Los títulos deben tener una personalidad similar a la referencia.
+
+Utilizar una fuente sans-serif moderna y fuerte.
+
+La jerarquía debe ser clara:
+
+LABEL PEQUEÑO EN NARANJA
+
+↓
+
+TÍTULO GRANDE
+
+↓
+
+DESCRIPCIÓN
+
+↓
+
+BOTÓN
+
+---
+
+# ESPACIADO
+
+IMPORTANTE:
+
+No hacer que cada sección tenga una altura exagerada.
+
+Quiero que la página sea visualmente densa pero ordenada.
+
+El usuario debería poder recorrer varias secciones sin sentir que hay demasiado espacio vacío.
+
+Utilizar aproximadamente:
+
+* padding vertical moderado
+* grids bien aprovechados
+* tarjetas compactas
+* títulos grandes
+* separación clara entre secciones
+
+---
+
+# BOTONES
+
+Los botones principales deben ser:
+
+* naranja
+* redondeados
+* claros
+* con buen contraste
+* con hover
+
+Ejemplo:
+
+`PEDÍ TU PRESUPUESTO →`
+
+El CTA principal siempre debe ser visualmente reconocible.
+
+---
+
+# ANIMACIONES
+
+Agregar solamente microanimaciones:
+
+* fade-in
+* desplazamiento leve
+* hover
+* zoom sutil en imágenes
+* transición de botones
+* aparición al hacer scroll
+
+NO utilizar animaciones exageradas.
+
+---
+
+# RESPONSIVE
+
+La referencia está pensada principalmente para desktop.
+
+Pero la implementación debe ser excelente en:
+
+Desktop
+Tablet
+Mobile
+
+En mobile:
+
+* navbar hamburguesa
+* Hero vertical
+* títulos grandes pero adaptados
+* tarjetas en 1 o 2 columnas
+* galería adaptada
+* productos en scroll horizontal o grid
+* formulario vertical
+* footer vertical
+
+NO permitir overflow horizontal.
+
+---
+
+# IMPORTANTE SOBRE EL DISEÑO ACTUAL
+
+No quiero que simplemente mantengas la estructura actual y cambies algunos colores.
+
+Quiero que:
+
+**REDISEÑES VISUALMENTE LA INTERFAZ PARA ACERCARLA AL BOCETO DE REFERENCIA.**
+
+La prioridad es:
+
+1. Composición visual
+2. Hero impactante
+3. Tipografía
+4. Espaciado
+5. Galería
+6. Tarjetas
+7. Contraste oscuro/crema
+8. CTA
+9. Responsive
+
+---
+
+# NO MODIFICAR LA ARQUITECTURA DEL PROYECTO SIN NECESIDAD
+
+Conservar la tecnología y estructura existente siempre que sea posible.
+
+No eliminar funcionalidades que ya estén funcionando.
+
+Modificar principalmente:
+
+* estilos
+* componentes visuales
+* layout
+* spacing
+* tipografía
+* colores
+* imágenes/placeholders
+* animaciones
+
+---
+
+# RESULTADO QUE BUSCO
+
+Cuando termine, quiero que alguien vea la página y piense:
+
+**"Esto parece una gráfica moderna y profesional."**
+
+No:
+
+**"Esto parece una plantilla de página web."**
+
+La referencia visual adjunta es el estándar de calidad que quiero alcanzar.
+
+Quiero una página:
+
+**oscura + naranja + crema + editorial + gráfica + moderna + premium + visual.**
+
+Antes de finalizar, revisá toda la página completa y corregí:
+
+* elementos desalineados
+* espacios excesivos
+* textos demasiado pequeños
+* botones inconsistentes
+* imágenes deformadas
+* tarjetas desproporcionadas
+* problemas responsive
+* overflow horizontal
+* contrastes deficientes
+* secciones que parezcan genéricas
+
+El resultado debe sentirse como un diseño intencional y profesional para **La Gráfica**.
