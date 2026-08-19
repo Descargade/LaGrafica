@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, type FormEvent } from 'react';
+import { useEffect, useState, useCallback, useRef, type FormEvent } from 'react';
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -9,35 +9,82 @@ import {
   MapPin,
   Menu,
   Phone,
-  Plus,
   Send,
   X,
 } from 'lucide-react';
 
 import './index.css';
 
-type Service = {
-  number: string;
-  title: string;
-  copy: string;
-  color: string;
-  icon: string;
-};
+// ===== HOOKS =====
 
-type Work = {
-  title: string;
-  client: string;
-  category: string;
-  color: string;
-};
+function useScrollProgress() {
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(h > 0 ? (window.scrollY / h) * 100 : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return progress;
+}
 
-type Product = {
-  name: string;
-  tag: string;
-  description: string;
-  price: string;
-  color: string;
-};
+function useParallax(speed = 0.3) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const viewCenter = window.innerHeight / 2;
+      setOffset((center - viewCenter) * speed);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [speed]);
+  return { ref, offset };
+}
+
+function useCounter(target: number, duration = 1500) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    let start = 0;
+    const step = (ts: number) => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      setCount(Math.floor(ease * target));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [started, target, duration]);
+
+  return { ref, count };
+}
+
+// ===== DATA =====
+
+type Service = { number: string; title: string; copy: string; color: string; icon: string };
+type Work = { title: string; client: string; category: string; color: string };
+type Product = { name: string; tag: string; description: string; price: string; color: string };
 
 const services: Service[] = [
   { number: '01', title: 'Impresion', copy: 'Impresion digital y offset de alta calidad.', color: '#ff5722', icon: 'CMYK' },
@@ -73,6 +120,13 @@ const navLinks = [
   ['Sobre nosotros', '#nosotros'],
   ['Contacto', '#contacto'],
 ];
+
+// ===== COMPONENTS =====
+
+function ScrollProgress() {
+  const progress = useScrollProgress();
+  return <div className="scroll-progress" style={{ width: `${progress}%` }} />;
+}
 
 function Logo() {
   return (
@@ -128,6 +182,8 @@ function Header() {
 }
 
 function Hero() {
+  const { ref: parallaxRef, offset } = useParallax(0.15);
+
   return (
     <section id="inicio" className="hero-section">
       <div className="hero-section__inner">
@@ -148,10 +204,12 @@ function Hero() {
             <span><Check size={14} /> Entrega a tiempo</span>
           </div>
         </div>
-        <div className="hero-art" aria-label="Composicion de piezas graficas">
-          <div className="hero-spark" style={{ top: '15%', right: '45%' }} />
-          <div className="hero-spark" style={{ top: '55%', right: '20%' }} />
-          <div className="hero-spark" style={{ top: '30%', right: '65%' }} />
+        <div className="hero-art" ref={parallaxRef} aria-label="Composicion de piezas graficas" style={{ transform: `translateY(${offset}px)` }}>
+          <div className="hero-spark" style={{ top: '10%', right: '42%' }} />
+          <div className="hero-spark" style={{ top: '25%', right: '18%' }} />
+          <div className="hero-spark" style={{ top: '50%', right: '60%' }} />
+          <div className="hero-spark" style={{ top: '70%', right: '35%' }} />
+          <div className="hero-spark" style={{ top: '15%', right: '70%' }} />
           <div className="hero-card hero-card--1">
             <span className="hero-card__label" style={{ color: '#0d0d0d' }}>Impresion</span>
             <div className="hero-card__big-text" style={{ color: '#0d0d0d' }}>Tu Idea<br />En Grande</div>
@@ -177,6 +235,21 @@ function Hero() {
       </div>
     </section>
   );
+}
+
+function SectionDivider() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) el.classList.add('revealed'); },
+      { threshold: 0.5 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return <div className="section-divider" ref={ref} />;
 }
 
 function Services() {
@@ -206,6 +279,17 @@ function Services() {
 function Works() {
   const [filter, setFilter] = useState('Todos');
   const filtered = filter === 'Todos' ? works : works.filter((w) => w.category === filter);
+  const filtersRef = useRef<HTMLDivElement>(null);
+  const [hasOverflow, setHasOverflow] = useState(false);
+
+  useEffect(() => {
+    const el = filtersRef.current;
+    if (!el) return;
+    setHasOverflow(el.scrollWidth > el.clientWidth);
+    const onResize = () => setHasOverflow(el.scrollWidth > el.clientWidth);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   return (
     <section id="trabajos" className="section section--dark works-section">
@@ -213,12 +297,14 @@ function Works() {
         <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Nuestros trabajos</div>
         <div className="works-header">
           <h2 className="section-title" data-testid="text-works-title">Trabajos<br /><span>recientes.</span></h2>
-          <div className="work-filters" role="group" aria-label="Filtrar trabajos">
-            {categories.map((cat) => (
-              <button type="button" key={cat} onClick={() => setFilter(cat)} className={filter === cat ? 'is-active' : ''} data-testid={`button-filter-${cat.toLowerCase()}`}>
-                {cat}
-              </button>
-            ))}
+          <div className={`work-filters ${hasOverflow ? 'work-filters--has-overflow' : ''}`} role="group" aria-label="Filtrar trabajos">
+            <div className="work-filters__scroll" ref={filtersRef}>
+              {categories.map((cat) => (
+                <button type="button" key={cat} onClick={() => setFilter(cat)} className={filter === cat ? 'is-active' : ''} data-testid={`button-filter-${cat.toLowerCase()}`}>
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         <div className="works-grid">
@@ -251,9 +337,7 @@ function Products() {
           <h2 className="section-title" data-testid="text-products-title">Productos<br /><span>que mas elegis.</span></h2>
           <a href="#presupuesto" className="button" style={{ background: '#ff5722', color: '#0d0d0d' }}>Ver todos los productos <ArrowUpRight size={15} /></a>
         </div>
-        <p style={{ maxWidth: '400px', marginTop: '-32px', marginBottom: '40px', color: 'rgba(0,0,0,.55)', fontSize: '15px', lineHeight: '1.5' }}>
-          Los productos mas solicitados por nuestros clientes.
-        </p>
+        <p className="products-subtitle">Los productos mas solicitados por nuestros clientes.</p>
         <div className="products-grid">
           {products.map((product, index) => (
             <article key={product.name} className="product-card reveal-on-scroll" data-testid={`card-product-${index}`}>
@@ -266,7 +350,7 @@ function Products() {
               </div>
               <div className="product-card__footer">
                 <span className="product-card__price">{product.price}</span>
-                <a href="#presupuesto" className="button--circle" style={{ display: 'grid', placeItems: 'center', width: '42px', height: '42px', borderRadius: '50%', background: '#ff5722', color: '#0d0d0d', textDecoration: 'none', transition: 'transform .25s ease' }} data-testid={`link-product-${index}`}>
+                <a href="#presupuesto" style={{ display: 'grid', placeItems: 'center', width: '42px', height: '42px', borderRadius: '50%', background: '#ff5722', color: '#0d0d0d', textDecoration: 'none', transition: 'transform .25s ease' }} data-testid={`link-product-${index}`}>
                   <ArrowUpRight size={18} />
                 </a>
               </div>
@@ -362,11 +446,13 @@ function QuoteForm() {
 }
 
 function About() {
+  const counter1 = useCounter(10, 1200);
+  const counter2 = useCounter(100, 1400);
   const stats = [
-    { icon: <Clock size={22} />, value: '+10 Anos', label: 'De experiencia' },
-    { icon: <Check size={22} />, value: 'Calidad', label: 'Garantizada' },
-    { icon: <Mail size={22} />, value: 'Atencion', label: 'Personalizada' },
-    { icon: <Send size={22} />, value: 'Entregas', label: 'A tiempo' },
+    { ref: counter1.ref, value: `+${counter1.count}`, label: 'Anos de experiencia', icon: <Clock size={22} /> },
+    { ref: counter2.ref, value: `${counter2.count}%`, label: 'Calidad garantizada', icon: <Check size={22} /> },
+    { value: '01:01', label: 'Atencion personalizada', icon: <Mail size={22} /> },
+    { value: 'A TIEMPO', label: 'Entregas a tiempo', icon: <Send size={22} /> },
   ];
   return (
     <section id="nosotros" className="section section--cream about-section">
@@ -379,7 +465,7 @@ function About() {
         </div>
         <div className="about-stats">
           {stats.map((stat, i) => (
-            <div className="stat-card reveal-on-scroll" key={stat.label} data-testid={`stat-${i}`}>
+            <div className="stat-card reveal-on-scroll" key={stat.label} ref={stat.ref} data-testid={`stat-${i}`}>
               <div className="stat-card__icon">{stat.icon}</div>
               <div className="stat-card__value">{stat.value}</div>
               <div className="stat-card__label">{stat.label}</div>
@@ -453,6 +539,27 @@ function Footer() {
   );
 }
 
+function WhatsAppFAB() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <a
+      href="https://wa.me/541148320126"
+      className={`whatsapp-fab ${visible ? 'whatsapp-fab--visible' : ''}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <div className="whatsapp-fab__pulse" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  );
+}
+
 function Home() {
   useEffect(() => {
     const items = document.querySelectorAll('.reveal-on-scroll');
@@ -460,7 +567,7 @@ function Home() {
       (entries) => entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add('revealed');
       }),
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' },
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
     );
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
@@ -468,17 +575,25 @@ function Home() {
 
   return (
     <div className="site-shell">
+      <ScrollProgress />
       <Header />
       <main>
         <Hero />
+        <SectionDivider />
         <Services />
+        <SectionDivider />
         <Works />
+        <SectionDivider />
         <Products />
+        <SectionDivider />
         <QuoteForm />
+        <SectionDivider />
         <About />
+        <SectionDivider />
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFAB />
     </div>
   );
 }
