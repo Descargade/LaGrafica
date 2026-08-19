@@ -343,7 +343,6 @@
 .hero-art {
   position: relative;
   min-height: 560px;
-  will-change: transform;
 }
 .hero-art__collage {
   position: relative;
@@ -355,11 +354,9 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0,0,0,.4);
-  transition: transform .5s cubic-bezier(.23,1,.32,1), box-shadow .5s ease;
-  will-change: transform;
+  transition: box-shadow .4s ease;
 }
 .hero-card:hover {
-  transform: scale(1.05) !important;
   box-shadow: 0 16px 48px rgba(255,87,34,.2), 0 8px 32px rgba(0,0,0,.4);
 }
 .hero-card--1 { right: 10%; top: 5%; width: 260px; height: 340px; background: var(--orange); transform: rotate(3deg); z-index: 2; }
@@ -1195,19 +1192,16 @@
   .hero-proof { gap: 10px 14px; margin-top: 20px; font-size: 8px; }
   .hero-art {
     position: relative;
-    min-height: 240px;
-    margin-top: 24px;
-    overflow: hidden;
-    margin-left: -8px;
-    margin-right: -8px;
+    min-height: 280px;
+    margin-top: 28px;
   }
-  .hero-card--1 { width: 120px; height: 160px; right: 0; top: 0; transform: rotate(3deg); }
-  .hero-card--2 { width: 105px; height: 140px; right: 48%; top: 5%; transform: rotate(-3deg); }
-  .hero-card--3 { width: 100px; height: 130px; right: 24%; top: 45%; transform: rotate(4deg); }
-  .hero-card--4 { width: 90px; height: 120px; right: 0; top: 50%; transform: rotate(-2deg); }
+  .hero-card--1 { width: 115px; height: 155px; right: 0; top: 0; transform: rotate(3deg); }
+  .hero-card--2 { width: 100px; height: 135px; right: 50%; top: 5%; transform: rotate(-3deg); }
+  .hero-card--3 { width: 95px; height: 125px; right: 28%; top: 48%; transform: rotate(4deg); }
+  .hero-card--4 { width: 85px; height: 115px; right: 2%; top: 55%; transform: rotate(-2deg); }
   .hero-card__label { font-size: 7px; top: 10px; left: 10px; }
   .hero-card__big-text { font-size: 18px; bottom: 14px; left: 10px; right: 10px; }
-  .hero-bottomline { font-size: 8px; width: min(calc(100% - 32px), var(--max)); }
+  .hero-bottomline { font-size: 8px; padding: 0 16px; width: 100%; box-sizing: border-box; }
   .hero-bottomline__scroll { display: none; }
 
   /* Services */
@@ -1265,14 +1259,14 @@
   .section { padding: 56px 0; }
   .hero-section__inner { width: min(calc(100% - 20px), var(--max)); padding-top: 80px; padding-bottom: 50px; }
   .hero-copy h1 { font-size: clamp(2.2rem, 13vw, 3.8rem); }
-  .hero-art { min-height: 200px; margin-top: 20px; }
-  .hero-card--1 { width: 100px; height: 135px; }
-  .hero-card--2 { width: 88px; height: 120px; }
-  .hero-card--3 { width: 80px; height: 110px; }
-  .hero-card--4 { width: 72px; height: 100px; }
+  .hero-art { min-height: 240px; margin-top: 20px; }
+  .hero-card--1 { width: 100px; height: 135px; right: 0; top: 0; }
+  .hero-card--2 { width: 88px; height: 120px; right: 52%; top: 5%; }
+  .hero-card--3 { width: 80px; height: 110px; right: 30%; top: 50%; }
+  .hero-card--4 { width: 72px; height: 100px; right: 4%; top: 58%; }
   .hero-card__label { font-size: 6px; top: 8px; left: 8px; }
   .hero-card__big-text { font-size: 14px; bottom: 10px; left: 8px; right: 8px; }
-  .hero-bottomline { width: min(calc(100% - 20px), var(--max)); }
+  .hero-bottomline { width: 100%; padding: 0 10px; }
   .services-grid { grid-template-columns: 1fr; }
   .products-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
