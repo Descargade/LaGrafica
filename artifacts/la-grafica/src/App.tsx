@@ -3,99 +3,167 @@ import { ArrowDownRight, ArrowUpRight, Check, ChevronDown, Menu, Plus, X } from 
 
 import './index.css';
 
+type Service = {
+  number: string;
+  title: string;
+  copy: string;
+  visual: string;
+  icon: string;
+};
+
 type Work = {
   title: string;
   client: string;
   category: string;
   tone: string;
   mark: string;
+  size: string;
 };
 
-const services = [
-  { number: '01', title: 'Impresión', copy: 'La tinta justa, el papel que corresponde. De una tarjeta a una tirada completa.', accent: 'orange', visual: 'ink' },
-  { number: '02', title: 'Cartelería', copy: 'Que te vean desde la otra cuadra. Banners, lonas, rígidos y mucho más.', accent: 'cream', visual: 'type' },
-  { number: '03', title: 'Vinilos & Ploteos', copy: 'Superficies que hablan. Vitrinas, paredes, vehículos y señalética con carácter.', accent: 'red', visual: 'wave' },
-  { number: '04', title: 'Stickers', copy: 'Pequeños, grandes, mate o brillantes: tu marca en cualquier parte.', accent: 'peach', visual: 'dots' },
-  { number: '05', title: 'Diseño Gráfico', copy: 'Pensamos el mensaje, ordenamos el ruido y lo hacemos visualmente inolvidable.', accent: 'cream', visual: 'cross' },
-  { number: '06', title: 'Packaging', copy: 'El primer contacto también se diseña. Cajas, fajas, etiquetas y bolsas.', accent: 'orange', visual: 'box' },
+type Product = {
+  name: string;
+  tag: string;
+  description: string;
+  price: string;
+  shape: string;
+  code: string;
+};
+
+const services: Service[] = [
+  { number: '01', title: 'Impresión', copy: 'Papeles, tintas y terminaciones que hacen que una pieza se sienta bien.', visual: 'service-paper', icon: 'CMYK' },
+  { number: '02', title: 'Cartelería', copy: 'Lo que tu marca necesita para hacerse ver desde lejos y quedarse cerca.', visual: 'service-poster', icon: 'A3' },
+  { number: '03', title: 'Vinilos & Ploteos', copy: 'Vitrinas, paredes, vehículos y superficies con una nueva lectura.', visual: 'service-vinyl', icon: 'CUT' },
+  { number: '04', title: 'Stickers', copy: 'Series chicas o grandes, mate o brillante. Tu identidad, por todas partes.', visual: 'service-sticker', icon: 'PEGA' },
+  { number: '05', title: 'Diseño Gráfico', copy: 'Ordenamos el mensaje y lo convertimos en un sistema que funciona.', visual: 'service-design', icon: 'GRID' },
+  { number: '06', title: 'Packaging', copy: 'El primer contacto con tu producto también merece una buena idea.', visual: 'service-pack', icon: 'PACK' },
 ];
 
 const works: Work[] = [
-  { title: 'La esquina que faltaba', client: 'Identidad + vidriera', category: 'Ploteos', tone: 'work-orange', mark: 'LE' },
-  { title: 'Sábado de feria', client: 'Sistema de cartelería', category: 'Cartelería', tone: 'work-cream', mark: 'SF' },
-  { title: 'Todo entra acá', client: 'Packaging editorial', category: 'Packaging', tone: 'work-red', mark: 'TE' },
-  { title: 'Pegá donde quieras', client: 'Serie de stickers', category: 'Stickers', tone: 'work-peach', mark: 'PQ' },
-  { title: 'Materia prima', client: 'Papelería institucional', category: 'Impresión', tone: 'work-ink', mark: 'MP' },
-  { title: 'Un poco más fuerte', client: 'Campaña gráfica', category: 'Diseño', tone: 'work-red-alt', mark: 'MF' },
+  { title: 'La esquina que faltaba', client: 'Identidad + vidriera', category: 'Vinilos', tone: 'work-orange', mark: 'LE', size: 'work-large' },
+  { title: 'Sábado de feria', client: 'Sistema de cartelería', category: 'Cartelería', tone: 'work-cream', mark: 'SF', size: 'work-small' },
+  { title: 'Todo entra acá', client: 'Packaging editorial', category: 'Packaging', tone: 'work-red', mark: 'TE', size: 'work-tall' },
+  { title: 'Pegá donde quieras', client: 'Serie de stickers', category: 'Stickers', tone: 'work-peach', mark: 'PQ', size: 'work-small' },
+  { title: 'Materia prima', client: 'Papelería institucional', category: 'Impresión', tone: 'work-ink', mark: 'MP', size: 'work-wide' },
+  { title: 'Un poco más fuerte', client: 'Campaña gráfica', category: 'Diseño', tone: 'work-red-alt', mark: 'MF', size: 'work-tall' },
 ];
 
-const products = [
-  { name: 'Kit identidad', tag: 'Para empezar', description: 'Tarjetas + stickers + sello visual para que tu negocio salga a la calle.', price: 'desde $28.500', shape: 'product-sun' },
-  { name: 'Pack vidriera', tag: 'Más pedido', description: 'Diseño, producción y colocación de vinilo para transformar tu entrada.', price: 'desde $64.000', shape: 'product-window' },
-  { name: 'Tirada express', tag: 'En 48 horas', description: 'Lo urgente no tiene por qué verse improvisado. Consultá formatos disponibles.', price: 'a medida', shape: 'product-stack' },
+const products: Product[] = [
+  { name: 'Tarjetas personales', tag: 'Para presentarte', description: 'Un buen papel dice mucho antes de que empieces a hablar.', price: 'desde $18.900', shape: 'product-card-sheet', code: '01 / 250 u' },
+  { name: 'Volantes', tag: 'Para moverte', description: 'Información clara, formato ágil y una tirada que rinde.', price: 'desde $24.500', shape: 'product-flyer', code: '02 / A5' },
+  { name: 'Stickers', tag: 'Más pedido', description: 'Cortados a medida para que tu marca aparezca donde quieras.', price: 'desde $16.800', shape: 'product-sticker', code: '03 / troquel' },
+  { name: 'Banners', tag: 'Gran formato', description: 'Presencia de verdad para eventos, locales y campañas.', price: 'desde $39.000', shape: 'product-banner', code: '04 / 80×200' },
 ];
 
-const categories = ['Todos', 'Cartelería', 'Ploteos', 'Stickers', 'Packaging', 'Impresión', 'Diseño'];
+const categories = ['Todos', 'Impresión', 'Cartelería', 'Vinilos', 'Stickers', 'Diseño', 'Packaging'];
+const navLinks = [
+  ['Inicio', '#inicio'],
+  ['Servicios', '#servicios'],
+  ['Trabajos', '#trabajos'],
+  ['Productos', '#productos'],
+  ['Nosotros', '#nosotros'],
+  ['Contacto', '#contacto'],
+];
 
-function Logo({ light = false }: { light?: boolean }) {
+function Logo({ dark = false }: { dark?: boolean }) {
   return (
-    <a href="#inicio" className={`flex items-center gap-2.5 ${light ? 'text-[#1a1a1a]' : 'text-[#fff7ed]'}`} data-testid="link-logo">
-      <span className="grid h-9 w-9 place-items-center bg-[#ff6b00] font-display text-xl leading-none text-[#1a1a1a]">G</span>
-      <span className="font-display text-[17px] leading-[.85] tracking-[-.06em]">LA<br />GRÁFICA</span>
+    <a href="#inicio" className={`brand ${dark ? 'brand--dark' : ''}`} data-testid="link-logo">
+      <span className="brand__mark">G</span>
+      <span className="brand__name">LA<br />GRÁFICA</span>
     </a>
   );
 }
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const links = [['Inicio', '#inicio'], ['Servicios', '#servicios'], ['Trabajos', '#trabajos'], ['Productos', '#productos'], ['Nosotros', '#nosotros']];
+
   return (
-    <header className="absolute inset-x-0 top-0 z-40 px-5 py-5 md:px-10 md:py-7">
-      <div className="mx-auto flex max-w-[1360px] items-center justify-between">
+    <header className="site-header">
+      <div className="site-header__inner">
         <Logo />
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Navegación principal">
-          {links.map(([label, href]) => <a key={href} href={href} className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-[#fff7ed]/65 transition-colors hover:text-[#ff6b00]" data-testid={`link-nav-${label.toLowerCase()}`}>{label}</a>)}
-          <a href="#contacto" className="border border-[#fff7ed]/35 px-4 py-2 font-mono-custom text-[10px] uppercase tracking-[.14em] text-[#fff7ed] transition-colors hover:border-[#ff6b00] hover:bg-[#ff6b00] hover:text-[#1a1a1a]" data-testid="link-nav-contacto">Pedir presupuesto</a>
+        <nav className="desktop-nav" aria-label="Navegación principal">
+          {navLinks.map(([label, href]) => (
+            <a key={href} href={href} data-testid={`link-nav-${label.toLowerCase()}`}>{label}</a>
+          ))}
         </nav>
-        <button type="button" onClick={() => setOpen(!open)} className="grid h-10 w-10 place-items-center border border-[#fff7ed]/35 text-[#fff7ed] md:hidden" aria-label={open ? 'Cerrar menú' : 'Abrir menú'} data-testid="button-menu">
-          {open ? <X size={19} /> : <Menu size={19} />}
+        <a href="#presupuesto" className="button button--orange header-cta" data-testid="link-header-quote">
+          Pedí tu presupuesto <ArrowUpRight size={15} />
+        </a>
+        <button
+          type="button"
+          onClick={() => setOpen((current) => !current)}
+          className="menu-button"
+          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+          data-testid="button-menu"
+        >
+          {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
       {open && (
-        <nav className="mx-auto mt-4 max-w-[1360px] border border-[#fff7ed]/20 bg-[#1a1a1a] p-5 md:hidden" aria-label="Menú móvil">
-          {links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)} className="block border-b border-[#fff7ed]/10 py-4 font-mono-custom text-[11px] uppercase tracking-[.16em] text-[#fff7ed]" data-testid={`link-mobile-${label.toLowerCase()}`}>{label}</a>)}
-          <a href="#contacto" onClick={() => setOpen(false)} className="mt-5 block bg-[#ff6b00] px-4 py-3 text-center font-mono-custom text-[11px] uppercase tracking-[.12em] text-[#1a1a1a]" data-testid="link-mobile-contacto">Pedir presupuesto</a>
+        <nav className="mobile-nav" aria-label="Menú móvil">
+          {navLinks.map(([label, href]) => (
+            <a key={href} href={href} onClick={() => setOpen(false)} data-testid={`link-mobile-${label.toLowerCase()}`}>{label}</a>
+          ))}
+          <a href="#presupuesto" onClick={() => setOpen(false)} className="button button--orange" data-testid="link-mobile-quote">Pedí tu presupuesto <ArrowUpRight size={15} /></a>
         </nav>
       )}
     </header>
   );
 }
 
-function SectionLabel({ index, children, light = false }: { index: string; children: string; light?: boolean }) {
-  return <div className={`mb-7 flex items-center gap-3 font-mono-custom text-[10px] uppercase tracking-[.2em] ${light ? 'text-[#1a1a1a]/55' : 'text-[#fff7ed]/55'}`}><span className="text-[#ff6b00]">{index}</span><span className="h-px w-8 bg-current opacity-50" />{children}</div>;
+function SectionLabel({ index, children, dark = false }: { index: string; children: string; dark?: boolean }) {
+  return (
+    <div className={`section-label ${dark ? 'section-label--dark' : ''}`}>
+      <span>{index}</span><i />{children}
+    </div>
+  );
+}
+
+function HeroArtwork() {
+  return (
+    <div className="hero-art" aria-label="Composición editorial de piezas gráficas">
+      <div className="hero-art__orbit hero-art__orbit--one" />
+      <div className="hero-art__orbit hero-art__orbit--two" />
+      <div className="hero-art__cross" />
+      <div className="hero-sheet hero-sheet--back"><span>LA GRÁFICA</span><b>PRINT<br />OBJECTS</b></div>
+      <div className="hero-sheet hero-sheet--main">
+        <div className="hero-sheet__topline"><span>01 — 06</span><span>ESTUDIO VISUAL</span></div>
+        <div className="hero-sheet__word">HACER<br /><em>VISIBLE</em></div>
+        <div className="hero-sheet__bars"><i /><i /><i /><i /></div>
+        <div className="hero-sheet__footer">Diseño · tinta · calle</div>
+      </div>
+      <div className="hero-tag hero-tag--orange">IDEAS<br />EN SERIO</div>
+      <div className="hero-tag hero-tag--cream">PAPEL<br />& FORMA</div>
+      <div className="hero-art__caption">Composición 001 /<br />hecha en el taller</div>
+      <div className="hero-art__registration">+</div>
+    </div>
+  );
 }
 
 function Hero() {
   return (
-    <section id="inicio" className="relative min-h-[720px] overflow-hidden bg-[#1a1a1a] px-5 pb-20 pt-36 md:min-h-[820px] md:px-10 md:pt-44">
-      <div className="grid-paper absolute inset-0 opacity-20" />
-      <div className="absolute -right-32 top-32 h-[520px] w-[520px] rounded-full border border-[#ff6b00]/25 md:right-[4%] md:top-36" />
-      <div className="absolute -right-12 top-48 h-[350px] w-[350px] rounded-full border border-[#ff3d00]/20 md:right-[11%]" />
-      <div className="relative mx-auto max-w-[1360px]">
-        <p className="reveal font-mono-custom text-[10px] uppercase tracking-[.3em] text-[#ff6b00]" data-testid="text-hero-kicker">Estudio de gráfica · Buenos Aires · 2012—2024</p>
-        <h1 className="reveal reveal-delay-1 mt-5 max-w-[940px] font-display text-[clamp(4.2rem,12vw,11.5rem)] uppercase leading-[.79] tracking-[-.085em] text-[#fff7ed]" data-testid="text-hero-title">
-          Hacemos<br /><span className="text-[#ff6b00]">visible</span><br />lo que hacés.
-        </h1>
-        <div className="reveal reveal-delay-2 mt-10 flex max-w-[490px] items-end justify-between gap-5 md:ml-[38%] md:mt-12">
-          <p className="text-balance text-base leading-relaxed text-[#fff7ed]/65 md:text-lg">Gráfica, impresión y comunicación visual para ideas que merecen ocupar espacio.</p>
-          <a href="#contacto" className="group grid h-16 w-16 shrink-0 place-items-center rounded-full bg-[#ff3d00] text-[#fff7ed] transition-transform hover:scale-110" aria-label="Ir a pedir presupuesto" data-testid="link-hero-contacto"><ArrowDownRight className="transition-transform group-hover:rotate-45" size={25} /></a>
+    <section id="inicio" className="hero-section">
+      <div className="hero-section__grid" />
+      <div className="hero-section__inner">
+        <div className="hero-copy">
+          <p className="eyebrow hero-copy__eyebrow">Gráfica, impresión & comunicación visual</p>
+          <h1 data-testid="text-hero-title">Hacemos que<br />tus ideas<br /><span>se vean.</span></h1>
+          <p className="hero-copy__description">Soluciones gráficas de calidad para potenciar tu marca, tu negocio y tus proyectos.</p>
+          <div className="hero-copy__actions">
+            <a href="#presupuesto" className="button button--orange" data-testid="link-hero-quote">Pedí tu presupuesto <ArrowUpRight size={17} /></a>
+            <a href="#trabajos" className="button button--outline-light" data-testid="link-hero-work">Ver trabajos <ArrowDownRight size={17} /></a>
+          </div>
+          <div className="hero-proof">
+            <span><Check size={14} /> Calidad premium</span>
+            <span><Check size={14} /> Atención personalizada</span>
+            <span><Check size={14} /> Entrega a tiempo</span>
+          </div>
         </div>
-        <div className="sticker-drift absolute right-[7%] top-[64%] hidden rotate-[-8deg] bg-[#ffd9b3] px-5 py-3 text-center text-[#1a1a1a] shadow-[6px_6px_0_#ff3d00] md:block">
-          <span className="font-display text-2xl uppercase leading-[.9]">Tu idea<br />sale a la calle.</span>
-        </div>
+        <HeroArtwork />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 flex overflow-hidden border-t border-[#fff7ed]/15 py-3 text-[#fff7ed]/40">
-        <div className="marquee-track flex min-w-max gap-14 font-mono-custom text-[10px] uppercase tracking-[.25em]"><span>Imprimimos con criterio</span><span>Diseñamos para durar</span><span>Producimos en Buenos Aires</span><span>Imprimimos con criterio</span><span>Diseñamos para durar</span><span>Producimos en Buenos Aires</span></div>
+      <div className="hero-bottomline">
+        <span>Buenos Aires · Argentina</span>
+        <span className="hero-bottomline__scroll">Scroll para explorar <ArrowDownRight size={15} /></span>
+        <span>Desde 2012</span>
       </div>
     </section>
   );
@@ -103,20 +171,23 @@ function Hero() {
 
 function Services() {
   return (
-    <section id="servicios" className="bg-[#fff7ed] px-5 py-20 text-[#1a1a1a] md:px-10 md:py-28">
-      <div className="mx-auto max-w-[1360px]">
-        <SectionLabel index="01" light>Lo que hacemos</SectionLabel>
-        <div className="mb-14 grid gap-8 md:grid-cols-[1.1fr_.9fr] md:items-end">
-          <h2 className="font-display text-[clamp(3.5rem,8vw,8rem)] uppercase leading-[.82] tracking-[-.08em]">Ideas con<br /><span className="text-[#ff6b00]">cuerpo.</span></h2>
-          <p className="max-w-md text-base leading-relaxed text-[#1a1a1a]/65 md:pb-2 md:text-lg">No hacemos piezas aisladas. Construimos sistemas que se reconocen, se tocan y se recuerdan.</p>
+    <section id="servicios" className="section section--cream services-section">
+      <div className="container">
+        <SectionLabel index="01" dark>Lo que hacemos</SectionLabel>
+        <div className="section-intro section-intro--services">
+          <div>
+            <p className="eyebrow eyebrow--orange">Oficios para ideas con intención</p>
+            <h2 data-testid="text-services-title">Servicios<br /><span>que dejan marca.</span></h2>
+          </div>
+          <p className="section-intro__copy">Desde una pieza puntual hasta un sistema completo: pensamos, producimos y cuidamos cada detalle para que tu marca salga al mundo con claridad.</p>
         </div>
-        <div className="grid border-l border-t border-[#1a1a1a]/20 md:grid-cols-2 lg:grid-cols-3">
+        <div className="services-grid">
           {services.map((service) => (
-            <article key={service.number} className="group reveal-on-scroll min-h-[258px] border-b border-r border-[#1a1a1a]/20 p-5 transition-colors hover:bg-[#ffd9b3] md:p-7" data-testid={`card-service-${service.number}`}>
-              <div className="flex items-start justify-between"><span className="font-mono-custom text-[11px] text-[#ff6b00]">{service.number}</span><Plus size={17} className="transition-transform group-hover:rotate-90" /></div>
-              <div className={`mt-7 mb-5 h-14 w-20 ${service.visual} visual-${service.accent}`} aria-hidden="true"><span>{service.visual === 'type' ? 'A3' : service.visual === 'box' ? 'pack' : ''}</span></div>
-              <h3 className="font-display text-2xl uppercase tracking-[-.04em]">{service.title}</h3>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#1a1a1a]/60">{service.copy}</p>
+            <article key={service.number} className="service-card reveal-on-scroll" data-testid={`card-service-${service.number}`}>
+              <div className="service-card__head"><span>{service.number}</span><Plus size={17} /></div>
+              <div className={`service-card__visual ${service.visual}`} aria-hidden="true"><b>{service.icon}</b></div>
+              <h3>{service.title}</h3>
+              <p>{service.copy}</p>
             </article>
           ))}
         </div>
@@ -128,27 +199,35 @@ function Services() {
 function Works() {
   const [filter, setFilter] = useState('Todos');
   const filtered = filter === 'Todos' ? works : works.filter((work) => work.category === filter);
+
   return (
-    <section id="trabajos" className="bg-[#1a1a1a] px-5 py-20 md:px-10 md:py-28">
-      <div className="mx-auto max-w-[1360px]">
-        <SectionLabel index="02">Selección de trabajos</SectionLabel>
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <h2 className="max-w-2xl font-display text-[clamp(3.6rem,8vw,8rem)] uppercase leading-[.82] tracking-[-.08em] text-[#fff7ed]">Lo que<br /><span className="text-[#ff6b00]">dejamos.</span></h2>
-          <div className="flex max-w-xl flex-wrap gap-2" role="group" aria-label="Filtrar trabajos">
-            {categories.map((category) => <button type="button" key={category} onClick={() => setFilter(category)} className={`border px-3 py-2 font-mono-custom text-[10px] uppercase tracking-[.09em] transition-colors ${filter === category ? 'border-[#ff6b00] bg-[#ff6b00] text-[#1a1a1a]' : 'border-[#fff7ed]/25 text-[#fff7ed]/65 hover:border-[#ff6b00] hover:text-[#ff6b00]'}`} data-testid={`button-filter-${category.toLowerCase()}`}>{category}</button>)}
+    <section id="trabajos" className="section section--ink works-section">
+      <div className="container">
+        <SectionLabel index="02">Nuestros trabajos</SectionLabel>
+        <div className="section-intro section-intro--works">
+          <div>
+            <p className="eyebrow eyebrow--orange">Una selección del archivo</p>
+            <h2 data-testid="text-works-title">Trabajos<br /><span>recientes.</span></h2>
+          </div>
+          <div className="work-filters" role="group" aria-label="Filtrar trabajos">
+            {categories.map((category) => (
+              <button type="button" key={category} onClick={() => setFilter(category)} className={filter === category ? 'is-active' : ''} data-testid={`button-filter-${category.toLowerCase()}`}>
+                {category}
+              </button>
+            ))}
           </div>
         </div>
-        <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="works-grid">
           {filtered.map((work, index) => (
-            <article key={work.title} className={`group reveal-on-scroll relative min-h-[280px] overflow-hidden p-6 ${work.tone} ${index === 1 ? 'md:translate-y-10' : ''}`} data-testid={`card-work-${work.mark}`}>
-              <div className="absolute right-5 top-5 font-mono-custom text-[10px] uppercase tracking-[.14em] opacity-70">{work.category}</div>
-              <div className="work-mark absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[8rem] uppercase leading-none transition-transform duration-500 group-hover:scale-110">{work.mark}</div>
-              <div className="relative z-10 mt-auto flex h-full flex-col justify-end"><p className="font-mono-custom text-[10px] uppercase tracking-[.12em] opacity-70">{work.client}</p><h3 className="mt-2 max-w-[240px] font-display text-3xl uppercase leading-[.86] tracking-[-.055em]">{work.title}</h3></div>
-              <ArrowUpRight className="absolute bottom-5 right-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" size={21} />
+            <article key={work.title} className={`work-card ${work.tone} ${work.size} reveal-on-scroll`} data-testid={`card-work-${work.mark}`}>
+              <div className="work-card__meta"><span>{work.category}</span><span>0{index + 1}</span></div>
+              <div className="work-card__shape"><span>{work.mark}</span><i /></div>
+              <div className="work-card__copy"><p>{work.client}</p><h3>{work.title}</h3></div>
+              <ArrowUpRight className="work-card__arrow" size={20} />
             </article>
           ))}
         </div>
-        {filtered.length === 0 && <div className="border border-[#fff7ed]/15 py-16 text-center text-[#fff7ed]/50">Todavía no hay trabajos en esta categoría.</div>}
+        {filtered.length === 0 && <div className="empty-work" data-testid="empty-work">Todavía no hay trabajos en esta categoría.</div>}
       </div>
     </section>
   );
@@ -156,16 +235,25 @@ function Works() {
 
 function Products() {
   return (
-    <section id="productos" className="bg-[#ff6b00] px-5 py-20 text-[#1a1a1a] md:px-10 md:py-28">
-      <div className="mx-auto max-w-[1360px]">
-        <SectionLabel index="03" light>Para resolverlo hoy</SectionLabel>
-        <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end"><h2 className="font-display text-[clamp(3.5rem,8vw,8rem)] uppercase leading-[.82] tracking-[-.08em]">Atajos<br />con onda.</h2><p className="max-w-sm text-base leading-relaxed text-[#1a1a1a]/65">Combinaciones pensadas para los pedidos que recibimos todas las semanas.</p></div>
-        <div className="grid gap-4 lg:grid-cols-3">
+    <section id="productos" className="section section--cream products-section">
+      <div className="container">
+        <SectionLabel index="03" dark>Lo más pedido</SectionLabel>
+        <div className="section-intro section-intro--products">
+          <div>
+            <p className="eyebrow eyebrow--orange">Soluciones listas para salir</p>
+            <h2 data-testid="text-products-title">Productos<br /><span>destacados.</span></h2>
+          </div>
+          <p className="section-intro__copy">Formatos probados, combinaciones honestas y la posibilidad de adaptarlos a tu medida.</p>
+        </div>
+        <div className="products-grid">
           {products.map((product, index) => (
-            <article key={product.name} className={`reveal-on-scroll relative flex min-h-[430px] flex-col justify-between border border-[#1a1a1a]/30 p-6 ${index === 1 ? 'bg-[#fff7ed]' : 'bg-[#ffd9b3]'}`} data-testid={`card-product-${index}`}>
-              <div className="flex items-start justify-between"><span className="border border-[#1a1a1a]/35 px-2 py-1 font-mono-custom text-[9px] uppercase tracking-[.13em]">{product.tag}</span><span className="font-mono-custom text-[10px]">0{index + 1}</span></div>
-              <div className={`mx-auto my-8 h-36 w-44 ${product.shape}`} aria-hidden="true"><span>{index === 0 ? 'LG' : index === 1 ? 'ABRÍ' : '48H'}</span></div>
-              <div><h3 className="font-display text-3xl uppercase leading-none tracking-[-.05em]">{product.name}</h3><p className="mt-3 max-w-xs text-sm leading-relaxed text-[#1a1a1a]/65">{product.description}</p><div className="mt-6 flex items-center justify-between border-t border-[#1a1a1a]/20 pt-4"><span className="font-mono-custom text-[11px] uppercase">{product.price}</span><a href="#contacto" className="group flex items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.1em]" data-testid={`link-product-${index}`}>Consultar <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></a></div></div>
+            <article key={product.name} className="product-card reveal-on-scroll" data-testid={`card-product-${index}`}>
+              <div className="product-card__top"><span>{product.tag}</span><small>{product.code}</small></div>
+              <div className={`product-card__visual ${product.shape}`} aria-hidden="true"><b>{index === 0 ? 'NOMBRE' : index === 1 ? 'VOLANTE' : index === 2 ? 'PEGÁ' : 'ACÁ'}</b><i /></div>
+              <div className="product-card__bottom">
+                <div><h3>{product.name}</h3><p>{product.description}</p></div>
+                <div className="product-card__price"><span>{product.price}</span><a href="#presupuesto" aria-label={`Consultar por ${product.name}`} data-testid={`link-product-${index}`}><ArrowUpRight size={18} /></a></div>
+              </div>
             </article>
           ))}
         </div>
@@ -174,38 +262,67 @@ function Products() {
   );
 }
 
-function About() {
-  return (
-    <section id="nosotros" className="bg-[#fff7ed] px-5 py-20 text-[#1a1a1a] md:px-10 md:py-28">
-      <div className="mx-auto grid max-w-[1360px] gap-14 md:grid-cols-[.8fr_1.2fr] md:gap-24">
-        <div><SectionLabel index="04" light>El taller</SectionLabel><div className="about-poster reveal-on-scroll grid aspect-[4/5] max-w-sm place-items-center bg-[#1a1a1a] p-8 text-[#fff7ed]"><div className="border border-[#ff6b00] p-5 text-center"><div className="font-mono-custom text-[10px] uppercase tracking-[.25em] text-[#ff6b00]">Desde 2012</div><div className="mt-5 font-display text-7xl uppercase leading-[.75] tracking-[-.09em]">Hecho<br /><span className="text-[#ff6b00]">acá.</span></div><div className="mt-8 h-10 border-y border-[#fff7ed]/30 py-2 font-mono-custom text-[9px] uppercase tracking-[.2em]">Diseño · Tinta · Calle</div></div></div></div>
-        <div className="md:pt-16"><h2 className="font-display text-[clamp(3.6rem,7vw,7rem)] uppercase leading-[.82] tracking-[-.08em]">Somos de<br /><span className="text-[#ff6b00]">hacer.</span></h2><div className="mt-10 grid gap-8 text-base leading-relaxed text-[#1a1a1a]/70 md:grid-cols-2"><p>La Gráfica nació entre pruebas de color, entregas a contrarreloj y la obsesión por encontrar el soporte exacto. Somos un estudio chico con una red grande de oficios.</p><p>Trabajamos cerca. Preguntamos, proponemos y producimos. Porque una buena idea no termina en la pantalla: empieza cuando alguien la ve, la toca y la lleva consigo.</p></div><div className="mt-12 grid grid-cols-3 border-y border-[#1a1a1a]/20 py-5"><div><div className="font-display text-4xl tracking-[-.08em]">12</div><div className="mt-1 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#1a1a1a]/55">años de oficio</div></div><div><div className="font-display text-4xl tracking-[-.08em]">870</div><div className="mt-1 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#1a1a1a]/55">ideas impresas</div></div><div><div className="font-display text-4xl tracking-[-.08em]">01</div><div className="mt-1 font-mono-custom text-[9px] uppercase tracking-[.12em] text-[#1a1a1a]/55">taller propio</div></div></div></div>
-      </div>
-    </section>
-  );
-}
+type QuoteData = {
+  need: string;
+  quantity: string;
+  size: string;
+  material: string;
+  print: string;
+  details: string;
+};
+
+const initialQuote: QuoteData = { need: '', quantity: '', size: '', material: '', print: '', details: '' };
 
 function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [need, setNeed] = useState('');
+  const [form, setForm] = useState<QuoteData>(initialQuote);
+  const updateField = (field: keyof QuoteData, value: string) => setForm((current) => ({ ...current, [field]: value }));
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
   };
+  const resetForm = () => {
+    setForm(initialQuote);
+    setSubmitted(false);
+  };
+
   return (
-    <section id="contacto" className="bg-[#ffd9b3] px-5 py-20 text-[#1a1a1a] md:px-10 md:py-28">
-      <div className="mx-auto grid max-w-[1360px] gap-14 md:grid-cols-[.85fr_1.15fr] md:gap-24">
-        <div><SectionLabel index="05" light>Presupuesto</SectionLabel><h2 className="font-display text-[clamp(3.5rem,7.5vw,7.7rem)] uppercase leading-[.8] tracking-[-.08em]">Contanos<br /><span className="text-[#ff3d00]">qué pinta.</span></h2><p className="mt-8 max-w-sm text-base leading-relaxed text-[#1a1a1a]/65">Cuanto más nos cuentes, mejor podemos ayudarte. Te respondemos con ideas y números claros.</p><div className="mt-12 border-l-2 border-[#ff6b00] pl-4 font-mono-custom text-[10px] uppercase leading-relaxed tracking-[.1em] text-[#1a1a1a]/60">Sin compromiso<br />Respuesta en 24—48 hs</div></div>
-        <div className="border border-[#1a1a1a]/25 bg-[#fff7ed] p-5 md:p-9">
+    <section id="presupuesto" className="section section--ink quote-section">
+      <div className="container quote-layout">
+        <div className="quote-copy">
+          <SectionLabel index="04">Presupuesto</SectionLabel>
+          <p className="eyebrow eyebrow--orange">Lo hacemos fácil</p>
+          <h2 data-testid="text-quote-title">¿Querés un<br />presupuesto<br /><span>rápido?</span></h2>
+          <p>Contanos qué necesitás y te respondemos con ideas concretas y números claros. Sin vueltas, sin compromiso.</p>
+          <div className="quote-note"><span>24—48 hs</span><small>Tiempo estimado de respuesta</small></div>
+        </div>
+        <div className="quote-form-wrap">
           {submitted ? (
-            <div className="flex min-h-[490px] flex-col items-start justify-center"><div className="grid h-14 w-14 place-items-center rounded-full bg-[#ff6b00]"><Check size={28} /></div><h3 className="mt-7 font-display text-4xl uppercase leading-none tracking-[-.06em]">Listo, llegó<br />al taller.</h3><p className="mt-5 max-w-sm text-sm leading-relaxed text-[#1a1a1a]/65">Recibimos tu consulta de manera local. En breve te escribimos para darle forma.</p><button type="button" onClick={() => setSubmitted(false)} className="mt-8 border-b border-[#1a1a1a] pb-1 font-mono-custom text-[10px] uppercase tracking-[.12em]" data-testid="button-new-quote">Enviar otra consulta</button></div>
+            <div className="quote-success" data-testid="status-quote-success">
+              <div className="quote-success__icon"><Check size={28} /></div>
+              <p className="eyebrow eyebrow--orange">Consulta recibida</p>
+              <h3>Listo, llegó<br />al taller.</h3>
+              <p>Guardamos tu consulta de forma local para esta demo. En un próximo paso podemos conectarla con tu canal de atención.</p>
+              <button type="button" className="text-button" onClick={resetForm} data-testid="button-reset-quote">Enviar otra consulta <ArrowUpRight size={15} /></button>
+            </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6" data-testid="form-quote">
-              <div><label htmlFor="need" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.14em]">¿Qué necesitás?</label><select id="need" required value={need} onChange={(event) => setNeed(event.target.value)} className="w-full appearance-none border-b border-[#1a1a1a]/30 bg-transparent px-0 py-3 text-base outline-none focus:border-[#ff6b00]" data-testid="select-need"><option value="">Elegí una opción</option><option>Impresión</option><option>Cartelería</option><option>Vinilos & Ploteos</option><option>Stickers</option><option>Diseño Gráfico</option><option>Packaging</option></select></div>
-              <div className="grid gap-6 sm:grid-cols-2"><div><label htmlFor="quantity" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.14em]">Cantidad</label><input id="quantity" type="text" placeholder="Ej. 100 unidades" className="w-full border-b border-[#1a1a1a]/30 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#1a1a1a]/35 focus:border-[#ff6b00]" data-testid="input-quantity" /></div><div><label htmlFor="size" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.14em]">Medidas</label><input id="size" type="text" placeholder="Ej. 10 × 15 cm" className="w-full border-b border-[#1a1a1a]/30 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#1a1a1a]/35 focus:border-[#ff6b00]" data-testid="input-size" /></div></div>
-              <div className="grid gap-6 sm:grid-cols-2"><div><label htmlFor="material" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.14em]">Material</label><input id="material" type="text" placeholder="Papel, vinilo, lona..." className="w-full border-b border-[#1a1a1a]/30 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#1a1a1a]/35 focus:border-[#ff6b00]" data-testid="input-material" /></div><div><label htmlFor="print" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.14em]">Tipo de impresión</label><select id="print" defaultValue="" className="w-full appearance-none border-b border-[#1a1a1a]/30 bg-transparent px-0 py-3 text-base outline-none focus:border-[#ff6b00]" data-testid="select-print"><option value="">A definir</option><option>Digital</option><option>Gran formato</option><option>Serigrafía</option><option>No lo sé todavía</option></select></div></div>
-              <div><label htmlFor="details" className="mb-2 block font-mono-custom text-[10px] uppercase tracking-[.14em]">Detalles adicionales</label><textarea id="details" rows={3} placeholder="Contanos un poco más sobre tu idea..." className="w-full resize-none border-b border-[#1a1a1a]/30 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#1a1a1a]/35 focus:border-[#ff6b00]" data-testid="textarea-details" /></div>
-              <button type="submit" className="group mt-2 flex w-full items-center justify-between bg-[#ff3d00] px-5 py-4 font-mono-custom text-[10px] uppercase tracking-[.14em] text-[#fff7ed] transition-colors hover:bg-[#1a1a1a]" data-testid="button-submit-quote"><span>Enviar consulta</span><ArrowUpRight size={18} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></button>
+            <form onSubmit={handleSubmit} className="quote-form" data-testid="form-quote">
+              <div className="form-field form-field--select">
+                <label htmlFor="need">¿Qué necesitás?</label>
+                <select id="need" required value={form.need} onChange={(event) => updateField('need', event.target.value)} data-testid="select-need">
+                  <option value="">Elegí una opción</option><option>Impresión</option><option>Cartelería</option><option>Vinilos & Ploteos</option><option>Stickers</option><option>Diseño Gráfico</option><option>Packaging</option>
+                </select><ChevronDown size={16} />
+              </div>
+              <div className="form-row">
+                <label className="form-field"><span>Cantidad</span><input required value={form.quantity} onChange={(event) => updateField('quantity', event.target.value)} placeholder="Ej. 100 unidades" data-testid="input-quantity" /></label>
+                <label className="form-field"><span>Medidas</span><input value={form.size} onChange={(event) => updateField('size', event.target.value)} placeholder="Ej. 10 × 15 cm" data-testid="input-size" /></label>
+              </div>
+              <div className="form-row">
+                <label className="form-field"><span>Material</span><input value={form.material} onChange={(event) => updateField('material', event.target.value)} placeholder="Papel, vinilo, lona..." data-testid="input-material" /></label>
+                <label className="form-field form-field--select"><span>Impresión</span><select value={form.print} onChange={(event) => updateField('print', event.target.value)} data-testid="select-print"><option value="">A definir</option><option>Digital</option><option>Gran formato</option><option>Serigrafía</option><option>No lo sé todavía</option></select><ChevronDown size={16} /></label>
+              </div>
+              <label className="form-field"><span>Detalles adicionales</span><textarea required value={form.details} onChange={(event) => updateField('details', event.target.value)} placeholder="Contanos un poco más sobre tu idea..." rows={3} data-testid="textarea-details" /></label>
+              <button type="submit" className="button button--orange button--full" data-testid="button-submit-quote">Enviar consulta <ArrowUpRight size={18} /></button>
             </form>
           )}
         </div>
@@ -214,12 +331,74 @@ function QuoteForm() {
   );
 }
 
+function About() {
+  const indicators = [
+    ['+10', 'Años de experiencia'],
+    ['100%', 'Calidad garantizada'],
+    ['01:01', 'Atención personalizada'],
+    ['A TIEMPO', 'Entregas a tiempo'],
+  ];
+  return (
+    <section id="nosotros" className="section section--cream about-section">
+      <div className="container about-layout">
+        <div className="about-intro">
+          <SectionLabel index="05" dark>Quiénes somos</SectionLabel>
+          <p className="eyebrow eyebrow--orange">Más que impresiones</p>
+          <h2 data-testid="text-about-title">Creamos<br /><span>soluciones.</span></h2>
+          <p className="about-description">La Gráfica nació entre pruebas de color, entregas a contrarreloj y la obsesión por encontrar el soporte exacto. Somos un estudio chico con una red grande de oficios.</p>
+        </div>
+        <div className="about-indicators">
+          {indicators.map(([value, label], index) => (
+            <div className="indicator" key={label} data-testid={`indicator-${index}`}>
+              <span className="indicator__number">{value}</span>
+              <span className="indicator__dot" />
+              <span className="indicator__label">{label}</span>
+            </div>
+          ))}
+          <div className="about-stamp">HECHO<br /><em>ACÁ.</em></div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contacto" className="section section--red contact-section">
+      <div className="container">
+        <SectionLabel index="06">Contacto</SectionLabel>
+        <div className="contact-layout">
+          <div>
+            <p className="eyebrow eyebrow--cream">Abrimos el taller</p>
+            <h2 data-testid="text-contact-title">Hablemos<br />de tu<br /><span>proyecto.</span></h2>
+          </div>
+          <div className="contact-info">
+            <p className="contact-info__intro">Una idea se vuelve real cuando encuentra su forma. La buscamos con vos.</p>
+            <div className="contact-info__grid">
+              <a href="mailto:hola@lagrafica.com.ar" data-testid="link-contact-email"><small>Email</small>hola@lagrafica.com.ar</a>
+              <a href="tel:+541147892011" data-testid="link-contact-phone"><small>Teléfono</small>+54 11 4789 2011</a>
+              <a href="#trabajos" data-testid="link-contact-instagram"><small>Instagram</small>@lagrafica.estudio</a>
+              <div><small>Encontranos</small>Av. Dorrego 1744<br />CABA, Buenos Aires</div>
+            </div>
+            <a href="#presupuesto" className="button button--cream" data-testid="link-contact-quote">Hablá con nosotros <ArrowUpRight size={17} /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] px-5 pb-7 pt-16 text-[#fff7ed] md:px-10">
-      <div className="mx-auto max-w-[1360px]">
-        <div className="grid gap-12 border-b border-[#fff7ed]/15 pb-14 md:grid-cols-[1.2fr_.8fr_.8fr]"><div><Logo /><h2 className="mt-12 max-w-xl font-display text-[clamp(3rem,6vw,6rem)] uppercase leading-[.8] tracking-[-.08em]">Que se<br /><span className="text-[#ff6b00]">note.</span></h2></div><div><p className="mb-5 font-mono-custom text-[10px] uppercase tracking-[.18em] text-[#fff7ed]/45">Encontranos</p><a href="mailto:hola@lagrafica.com.ar" className="block text-base text-[#fff7ed]/80 hover:text-[#ff6b00]" data-testid="link-email">hola@lagrafica.com.ar</a><a href="tel:+541147892011" className="mt-2 block text-base text-[#fff7ed]/80 hover:text-[#ff6b00]" data-testid="link-phone">+54 11 4789 2011</a><p className="mt-7 max-w-[170px] text-sm leading-relaxed text-[#fff7ed]/55">Av. Dorrego 1744<br />CABA, Buenos Aires</p></div><div><p className="mb-5 font-mono-custom text-[10px] uppercase tracking-[.18em] text-[#fff7ed]/45">Seguí la tinta</p><a href="#trabajos" className="block text-base text-[#fff7ed]/80 hover:text-[#ff6b00]" data-testid="link-instagram">Instagram</a><a href="#contacto" className="mt-2 block text-base text-[#fff7ed]/80 hover:text-[#ff6b00]" data-testid="link-contacto-footer">Presupuestos</a><p className="mt-7 font-mono-custom text-[10px] uppercase tracking-[.12em] text-[#fff7ed]/45">Lun—Vie · 9 a 18 hs</p></div></div>
-        <div className="flex flex-col justify-between gap-3 pt-6 font-mono-custom text-[9px] uppercase tracking-[.14em] text-[#fff7ed]/35 sm:flex-row"><span>© La Gráfica 2024</span><span>Diseño, impresión y calle</span><a href="#inicio" className="text-[#ff6b00]" data-testid="link-back-top">Volver arriba ↑</a></div>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-top">
+          <div className="footer-brand"><Logo /><h2>Que se<br /><span>note.</span></h2></div>
+          <div className="footer-column"><p>Enlaces</p>{navLinks.map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase()}`}>{label}</a>)}</div>
+          <div className="footer-column"><p>Contacto</p><a href="mailto:hola@lagrafica.com.ar" data-testid="link-footer-email">hola@lagrafica.com.ar</a><a href="tel:+541147892011" data-testid="link-footer-phone">+54 11 4789 2011</a><a href="#trabajos" data-testid="link-footer-instagram">@lagrafica.estudio</a></div>
+          <div className="footer-column"><p>Ubicación</p><span>Av. Dorrego 1744<br />CABA, Buenos Aires</span><span>Lun—Vie · 9 a 18 hs</span></div>
+        </div>
+        <div className="footer-bottom"><span>© La Gráfica 2024</span><span>Diseño, impresión y calle</span><a href="#inicio" data-testid="link-back-top">Volver arriba <ArrowUpRight size={13} /></a></div>
       </div>
     </footer>
   );
@@ -228,20 +407,24 @@ function Footer() {
 function Home() {
   useEffect(() => {
     const items = document.querySelectorAll('.reveal-on-scroll');
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('revealed')), { threshold: 0.12 });
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('revealed');
+    }), { threshold: 0.12 });
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, []);
 
-  return <div className="grain min-h-[100dvh] bg-[#1a1a1a]"><Header /><main><Hero /><Services /><Works /><Products /><About /><QuoteForm /></main><Footer /></div>;
-}
-
-function Router() {
-  return <Home />;
+  return (
+    <div className="grain site-shell">
+      <Header />
+      <main><Hero /><Services /><Works /><Products /><QuoteForm /><About /><Contact /></main>
+      <Footer />
+    </div>
+  );
 }
 
 function App() {
-  return <Router />;
+  return <Home />;
 }
 
 export default App;
