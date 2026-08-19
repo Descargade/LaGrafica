@@ -18,34 +18,53 @@ import './index.css';
 // ===== HOOKS =====
 
 function useScrollProgress() {
-  const [progress, setProgress] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? (window.scrollY / h) * 100 : 0);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        if (!ref.current) { ticking = false; return; }
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+        ref.current.style.width = `${pct}%`;
+        ticking = false;
+      });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-  return progress;
+  return ref;
 }
 
 function useParallax(speed = 0.3) {
   const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
+  const rafId = useRef(0);
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let ticking = false;
     const onScroll = () => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const viewCenter = window.innerHeight / 2;
-      setOffset((center - viewCenter) * speed);
+      if (ticking) return;
+      ticking = true;
+      rafId.current = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const viewCenter = window.innerHeight / 2;
+        const offset = (center - viewCenter) * speed;
+        el.style.transform = `translateY(${offset}px)`;
+        ticking = false;
+      });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafId.current);
+    };
   }, [speed]);
-  return { ref, offset };
+  return { ref };
 }
 
 function useCounter(target: number, duration = 1500) {
@@ -124,8 +143,8 @@ const navLinks = [
 // ===== COMPONENTS =====
 
 function ScrollProgress() {
-  const progress = useScrollProgress();
-  return <div className="scroll-progress" style={{ width: `${progress}%` }} />;
+  const barRef = useScrollProgress();
+  return <div className="scroll-progress" ref={barRef} />;
 }
 
 function Logo() {
@@ -146,6 +165,11 @@ function Header() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
 
   return (
     <header className={`site-header ${scrolled ? 'site-header--scrolled' : ''}`}>
@@ -169,20 +193,18 @@ function Header() {
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
-      {open && (
-        <nav className="mobile-nav" aria-label="Menu movil">
-          {navLinks.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setOpen(false)} data-testid={`link-mobile-${label.toLowerCase()}`}>{label}</a>
-          ))}
-          <a href="#presupuesto" onClick={() => setOpen(false)} className="button button--orange" data-testid="link-mobile-quote">Pedí tu presupuesto <ArrowUpRight size={15} /></a>
-        </nav>
-      )}
+      <nav className={`mobile-nav ${open ? 'mobile-nav--open' : ''}`} aria-label="Menu movil">
+        {navLinks.map(([label, href]) => (
+          <a key={href} href={href} onClick={() => setOpen(false)} data-testid={`link-mobile-${label.toLowerCase()}`}>{label}</a>
+        ))}
+        <a href="#presupuesto" onClick={() => setOpen(false)} className="button button--orange" data-testid="link-mobile-quote">Pedí tu presupuesto <ArrowUpRight size={15} /></a>
+      </nav>
     </header>
   );
 }
 
 function Hero() {
-  const { ref: parallaxRef, offset } = useParallax(0.15);
+  const { ref: parallaxRef } = useParallax(0.15);
 
   return (
     <section id="inicio" className="hero-section">
@@ -204,7 +226,7 @@ function Hero() {
             <span><Check size={14} /> Entrega a tiempo</span>
           </div>
         </div>
-        <div className="hero-art" ref={parallaxRef} aria-label="Composicion de piezas graficas" style={{ transform: `translateY(${offset}px)` }}>
+        <div className="hero-art" ref={parallaxRef} aria-label="Composicion de piezas graficas">
           <div className="hero-spark" style={{ top: '10%', right: '42%' }} />
           <div className="hero-spark" style={{ top: '25%', right: '18%' }} />
           <div className="hero-spark" style={{ top: '50%', right: '60%' }} />
