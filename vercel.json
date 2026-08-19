@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd artifacts/la-grafica && PORT=5173 BASE_PATH=/ npx vite build",
+  "outputDirectory": "artifacts/la-grafica/dist",
+  "framework": "vite",
+  "installCommand": "pnpm install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
