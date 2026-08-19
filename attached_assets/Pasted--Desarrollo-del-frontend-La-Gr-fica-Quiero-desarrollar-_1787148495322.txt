@@ -1,0 +1,583 @@
+# Desarrollo del frontend — La Gráfica
+
+Quiero desarrollar el frontend completo de una página web profesional para un negocio llamado **“La Gráfica”**, dedicado a servicios de gráfica, impresión, cartelería, vinilos, stickers, diseño gráfico, packaging y productos relacionados.
+
+Voy a adjuntar una imagen de referencia/boceto visual. **Utilizá esa imagen como referencia principal de diseño, composición, jerarquía visual y estilo**, pero generá una implementación web real, limpia y profesional.
+
+## OBJETIVO
+
+La página debe transmitir:
+
+* Modernidad
+* Creatividad
+* Energía
+* Profesionalismo
+* Calidad
+* Confianza
+* Una empresa gráfica moderna y no una empresa corporativa tradicional
+
+Quiero evitar completamente el aspecto de una plantilla genérica.
+
+La página debe sentirse como una **marca gráfica moderna, urbana y creativa**.
+
+---
+
+# PALETA DE COLORES
+
+Utilizar principalmente esta paleta:
+
+* Naranja principal: `#FF6B00`
+* Naranja/rojo de acento: `#FF3D00`
+* Negro: `#1A1A1A`
+* Crema: `#FFF7ED`
+* Durazno claro: `#FFD9B3`
+
+El fondo principal debe ser oscuro, utilizando `#1A1A1A` o tonos muy cercanos.
+
+El naranja `#FF6B00` debe utilizarse principalmente para:
+
+* botones
+* llamadas a la acción
+* detalles
+* iconos
+* estados activos
+* elementos destacados
+
+El `#FF3D00` debe utilizarse como color secundario para generar contraste.
+
+El crema debe utilizarse para:
+
+* textos principales
+* secciones claras
+* fondos alternativos
+* tarjetas destacadas
+
+NO utilizar una gran cantidad de colores adicionales.
+
+---
+
+# ESTILO VISUAL
+
+El diseño debe ser:
+
+* Dark mode predominante
+* Moderno
+* Limpio
+* Premium pero accesible
+* Visual
+* Dinámico
+* Con buena utilización de espacios
+* Tipografía grande y contundente en títulos
+* Bordes ligeramente redondeados
+* Sombras sutiles
+* Microanimaciones elegantes
+
+NO quiero:
+
+* diseño corporativo aburrido
+* exceso de degradados
+* exceso de sombras
+* demasiados efectos
+* animaciones exageradas
+* elementos que parezcan generados aleatoriamente
+* exceso de texto
+* tarjetas genéricas sin personalidad
+
+La prioridad es que la página se vea como una web real que podría utilizar una empresa gráfica profesional.
+
+---
+
+# ESTRUCTURA DE LA PÁGINA
+
+Crear una landing page completa con las siguientes secciones:
+
+## 1. NAVBAR
+
+Navbar fija o sticky.
+
+A la izquierda:
+
+**La Gráfica**
+
+con un espacio preparado para colocar posteriormente el logo real.
+
+Menú:
+
+* Inicio
+* Servicios
+* Trabajos
+* Productos
+* Nosotros
+* Contacto
+
+A la derecha:
+
+Botón destacado:
+
+**PEDÍ TU PRESUPUESTO**
+
+con icono de WhatsApp.
+
+En desktop mostrar el menú completo.
+
+En mobile utilizar menú hamburguesa.
+
+---
+
+# 2. HERO
+
+Esta debe ser una de las secciones más impactantes de la página.
+
+Fondo oscuro.
+
+Composición visual similar al boceto proporcionado.
+
+Utilizar un título grande:
+
+**HACEMOS QUE
+TUS IDEAS
+SE VEAN**
+
+Destacar algunas palabras utilizando naranja.
+
+Texto secundario:
+
+"Soluciones gráficas de calidad para potenciar tu marca, tu negocio y tus proyectos."
+
+Botones:
+
+**PEDÍ TU PRESUPUESTO**
+
+y
+
+**VER TRABAJOS**
+
+Debajo incluir pequeños indicadores de confianza:
+
+* Calidad premium
+* Atención personalizada
+* Entrega a tiempo
+
+La parte derecha del Hero debe tener una composición visual relacionada con una gráfica.
+
+IMPORTANTE:
+
+No utilizar imágenes borrosas, deformadas, con texto ilegible o con errores visuales.
+
+Si no existen imágenes reales disponibles, utilizar **placeholders limpios y profesionales** preparados para reemplazar posteriormente por fotografías reales.
+
+No inventar fotografías con aspecto extraño solamente para llenar espacio.
+
+---
+
+# 3. SERVICIOS
+
+Título pequeño:
+
+**LO QUE HACEMOS**
+
+Título principal:
+
+**SERVICIOS**
+
+Mostrar tarjetas visuales para los servicios.
+
+Servicios iniciales:
+
+* Impresión
+* Cartelería
+* Vinilos & Ploteos
+* Stickers
+* Diseño Gráfico
+* Packaging
+
+Cada tarjeta debe tener:
+
+* imagen o placeholder
+* icono
+* nombre
+* pequeña descripción
+* interacción hover
+
+Ejemplo:
+
+IMPRESIÓN
+
+"Impresión digital y offset de alta calidad."
+
+Las tarjetas deben verse modernas y visuales.
+
+---
+
+# 4. TRABAJOS
+
+Sección:
+
+**NUESTROS TRABAJOS**
+
+Título:
+
+**TRABAJOS RECIENTES**
+
+Crear una galería moderna tipo masonry/grid.
+
+Agregar filtros visuales:
+
+* Todos
+* Impresión
+* Cartelería
+* Vinilos
+* Stickers
+* Diseño
+* Packaging
+
+Las imágenes deben tener diferentes tamaños para generar una composición interesante.
+
+MUY IMPORTANTE:
+
+No utilizar imágenes generadas de mala calidad.
+
+Si no hay fotografías reales, utilizar placeholders visualmente coherentes, con proporciones correctas y sin texto extraño.
+
+Cada imagen debe poder ser reemplazada fácilmente posteriormente.
+
+Agregar botón:
+
+**VER MÁS TRABAJOS**
+
+---
+
+# 5. PRODUCTOS DESTACADOS
+
+Crear una sección con fondo crema `#FFF7ED`.
+
+Título:
+
+**PRODUCTOS DESTACADOS**
+
+Subtítulo:
+
+**LO MÁS PEDIDO**
+
+Mostrar productos en tarjetas:
+
+* Tarjetas personales
+* Volantes
+* Stickers
+* Banners
+
+Cada producto debe tener:
+
+* imagen
+* nombre
+* descripción/precio placeholder
+* botón o icono para consultar
+
+No implementar todavía compra ni pago.
+
+Esta sección solamente será frontend.
+
+---
+
+# 6. PRESUPUESTO RÁPIDO
+
+Esta sección es MUY IMPORTANTE porque posteriormente tendrá conexión con el backend.
+
+Crear una sección oscura y llamativa.
+
+Título:
+
+**¿QUERÉS UN
+PRESUPUESTO RÁPIDO?**
+
+Texto:
+
+"Completá los datos de tu proyecto y enviá la información por WhatsApp."
+
+Crear un formulario visual dividido en pasos/campos.
+
+Campos iniciales:
+
+1. ¿Qué necesitás?
+2. Cantidad
+3. Medidas
+4. Material
+5. Tipo de impresión
+6. Detalles adicionales
+
+Agregar botón:
+
+**ENVIAR POR WHATSAPP**
+
+Por ahora:
+
+* NO conectar con WhatsApp
+* NO guardar información
+* NO crear base de datos
+* NO crear backend
+
+Simplemente crear el frontend y dejar la estructura preparada para conectar posteriormente.
+
+---
+
+# 7. NOSOTROS
+
+Crear una sección clara utilizando el fondo crema.
+
+Título:
+
+**MÁS QUE IMPRESIONES,
+CREAMOS SOLUCIONES**
+
+Texto breve explicando la empresa.
+
+Agregar indicadores:
+
+* Experiencia
+* Calidad garantizada
+* Atención personalizada
+* Entregas a tiempo
+
+Los números y textos deben quedar como placeholders editables.
+
+---
+
+# 8. CONTACTO
+
+Crear una sección de contacto moderna.
+
+Mostrar:
+
+* WhatsApp
+* Teléfono
+* Instagram
+* Dirección
+* Horarios
+
+Agregar un botón grande:
+
+**HABLÁ CON NOSOTROS**
+
+También dejar un espacio preparado para un mapa.
+
+No implementar todavía integración real con mapas.
+
+---
+
+# 9. FOOTER
+
+Footer oscuro.
+
+Mostrar:
+
+**La Gráfica**
+
+Descripción breve.
+
+Links:
+
+* Inicio
+* Servicios
+* Trabajos
+* Productos
+* Nosotros
+* Contacto
+
+Redes sociales:
+
+* Instagram
+* Facebook
+* WhatsApp
+
+Información de contacto.
+
+Copyright.
+
+---
+
+# RESPONSIVE DESIGN
+
+La página debe estar completamente adaptada a:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+No quiero simplemente reducir el tamaño de los elementos.
+
+En mobile:
+
+* Navbar con menú hamburguesa
+* Hero vertical
+* Botones adaptados
+* Servicios en una columna o grid apropiado
+* Galería adaptada
+* Productos en scroll/grid
+* Formulario de presupuesto completamente usable
+* Footer organizado verticalmente
+
+La experiencia móvil debe sentirse tan cuidada como la versión desktop.
+
+---
+
+# ANIMACIONES
+
+Agregar microinteracciones elegantes:
+
+* hover en botones
+* hover en tarjetas
+* aparición suave de secciones al hacer scroll
+* pequeños desplazamientos
+* transiciones suaves
+* imágenes con zoom muy sutil al pasar el mouse
+
+NO utilizar animaciones exageradas.
+
+La página debe sentirse rápida y profesional.
+
+---
+
+# TIPOGRAFÍA
+
+Utilizar una tipografía moderna y fuerte para títulos.
+
+Los títulos deben tener personalidad gráfica.
+
+Combinar:
+
+* títulos grandes y contundentes
+* subtítulos claros
+* texto secundario fácil de leer
+
+Evitar tipografías excesivamente decorativas.
+
+---
+
+# ARQUITECTURA DEL FRONTEND
+
+Quiero que el código sea limpio, modular y fácil de mantener.
+
+Separar correctamente los componentes:
+
+* Navbar
+* Hero
+* Services
+* Portfolio
+* Products
+* QuoteForm
+* About
+* Contact
+* Footer
+
+Los datos de servicios, productos y trabajos deben estar preparados para poder reemplazarse posteriormente por datos provenientes de una API/backend.
+
+Por ejemplo, no escribir cada producto directamente de forma desordenada en el HTML.
+
+Crear estructuras de datos reutilizables.
+
+---
+
+# BACKEND
+
+NO desarrollar todavía:
+
+* autenticación
+* base de datos
+* panel administrador
+* sistema de usuarios
+* pagos
+* carrito
+* checkout
+* API
+* almacenamiento de imágenes
+* generación real de mensajes de WhatsApp
+* gestión de productos
+* gestión de pedidos
+
+Todo eso se implementará posteriormente.
+
+El objetivo de esta etapa es construir **ÚNICAMENTE EL FRONTEND**.
+
+Sin embargo, quiero que el código quede preparado para que posteriormente podamos conectar un backend sin tener que rehacer todo el frontend.
+
+---
+
+# ADMINISTRADOR FUTURO
+
+Aunque no hay que desarrollar el administrador ahora, tener en cuenta que posteriormente existirán datos dinámicos para:
+
+* productos
+* servicios
+* trabajos
+* imágenes
+* información de contacto
+* redes sociales
+* textos de la página
+
+Por eso evitar hardcodear innecesariamente toda la información.
+
+---
+
+# IMÁGENES
+
+La imagen que adjunto es una referencia del diseño.
+
+No es necesario copiar literalmente cada imagen del boceto.
+
+Priorizar:
+
+1. composición
+2. estética
+3. colores
+4. jerarquía
+5. estructura
+6. experiencia de usuario
+
+Si no hay imágenes reales disponibles:
+
+**UTILIZAR PLACEHOLDERS LIMPIOS.**
+
+Es preferible una tarjeta con un placeholder elegante antes que una imagen artificial borrosa, deformada o con texto incorrecto.
+
+Todas las imágenes deben mantener proporciones correctas y utilizar `object-fit: cover` cuando corresponda.
+
+---
+
+# RESULTADO FINAL
+
+Quiero que al ejecutar el proyecto se vea inmediatamente como una página web profesional terminada de **La Gráfica**.
+
+No quiero un prototipo básico.
+
+Quiero una implementación visual completa, responsive y pulida, siguiendo la referencia proporcionada.
+
+La página debe dar la sensación de:
+
+**"Esta empresa sabe de diseño, impresión y comunicación visual."**
+
+La estética debe ser llamativa pero profesional.
+
+El usuario debe tener siempre una acción clara para:
+
+**VER TRABAJOS → CONOCER PRODUCTOS → PEDIR PRESUPUESTO → CONTACTAR POR WHATSAPP**
+
+Antes de terminar, revisar cuidadosamente:
+
+* espaciados
+* alineaciones
+* tamaños
+* responsive
+* contraste
+* legibilidad
+* consistencia de colores
+* estados hover
+* botones
+* navegación
+* errores visuales
+* imágenes deformadas
+* overflow horizontal
+
+No dejar elementos rotos ni secciones incompletas.
+
+**IMPORTANTE: la imagen adjunta es la referencia visual principal para el diseño.**

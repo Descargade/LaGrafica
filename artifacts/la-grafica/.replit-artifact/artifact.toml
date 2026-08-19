@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "La Gráfica"
+description = "Landing page responsive para un estudio de gráfica, impresión y comunicación visual, con servicios, trabajos, productos y formulario de presupuesto."
+version = "1.0.0"
+id = "artifacts/la-grafica"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22346
+
+[services.development]
+run = "pnpm --filter @workspace/la-grafica run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/la-grafica", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/la-grafica/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22346"
+BASE_PATH = "/"
