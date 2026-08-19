@@ -226,27 +226,31 @@ function Hero() {
             <span><Check size={14} /> Entrega a tiempo</span>
           </div>
         </div>
-        <div className="hero-art" ref={parallaxRef} aria-label="Composicion de piezas graficas">
-          <div className="hero-spark" style={{ top: '10%', right: '42%' }} />
-          <div className="hero-spark" style={{ top: '25%', right: '18%' }} />
-          <div className="hero-spark" style={{ top: '50%', right: '60%' }} />
-          <div className="hero-spark" style={{ top: '70%', right: '35%' }} />
-          <div className="hero-spark" style={{ top: '15%', right: '70%' }} />
-          <div className="hero-card hero-card--1">
-            <span className="hero-card__label" style={{ color: '#0d0d0d' }}>Impresion</span>
-            <div className="hero-card__big-text" style={{ color: '#0d0d0d' }}>Tu Idea<br />En Grande</div>
+        <div className="hero-art" aria-label="Composicion de piezas graficas">
+          <div className="hero-art__sparks">
+            <div className="hero-spark" style={{ top: '10%', right: '42%' }} />
+            <div className="hero-spark" style={{ top: '25%', right: '18%' }} />
+            <div className="hero-spark" style={{ top: '50%', right: '60%' }} />
+            <div className="hero-spark" style={{ top: '70%', right: '35%' }} />
+            <div className="hero-spark" style={{ top: '15%', right: '70%' }} />
           </div>
-          <div className="hero-card hero-card--2">
-            <span className="hero-card__label">Neri Grafica</span>
-            <div className="hero-card__big-text" style={{ color: '#ff5722' }}>Print<br />Objects</div>
-          </div>
-          <div className="hero-card hero-card--3">
-            <span className="hero-card__label">Diseño</span>
-            <div className="hero-card__big-text">Hacer<br />Visible</div>
-          </div>
-          <div className="hero-card hero-card--4">
-            <span className="hero-card__label">Packaging</span>
-            <div className="hero-card__big-text">Marca<br />Propia</div>
+          <div className="hero-art__cards" ref={parallaxRef}>
+            <div className="hero-card hero-card--1">
+              <span className="hero-card__label" style={{ color: '#0d0d0d' }}>Impresion</span>
+              <div className="hero-card__big-text" style={{ color: '#0d0d0d' }}>Tu Idea<br />En Grande</div>
+            </div>
+            <div className="hero-card hero-card--2">
+              <span className="hero-card__label">Neri Grafica</span>
+              <div className="hero-card__big-text" style={{ color: '#ff5722' }}>Print<br />Objects</div>
+            </div>
+            <div className="hero-card hero-card--3">
+              <span className="hero-card__label">Diseño</span>
+              <div className="hero-card__big-text">Hacer<br />Visible</div>
+            </div>
+            <div className="hero-card hero-card--4">
+              <span className="hero-card__label">Packaging</span>
+              <div className="hero-card__big-text">Marca<br />Propia</div>
+            </div>
           </div>
         </div>
       </div>
