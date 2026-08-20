@@ -49,6 +49,11 @@ function useParallax(speed = 0.3) {
       if (ticking) return;
       ticking = true;
       rafId.current = requestAnimationFrame(() => {
+        if (window.innerWidth <= 768) {
+          el.style.transform = '';
+          ticking = false;
+          return;
+        }
         const rect = el.getBoundingClientRect();
         const center = rect.top + rect.height / 2;
         const viewCenter = window.innerHeight / 2;

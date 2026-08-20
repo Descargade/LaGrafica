@@ -1204,8 +1204,8 @@
     margin-top: 28px;
   }
   .hero-art__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
     gap: 10px;
     height: auto !important;
   }
