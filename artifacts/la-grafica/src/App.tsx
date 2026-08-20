@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef, type FormEvent } from 'react';
+import { Route, Switch, Link, useLocation } from 'wouter';
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -136,14 +137,32 @@ const products: Product[] = [
   { name: 'Banners', tag: 'Gran formato', description: 'Presencia de verdad para eventos, locales y campanas.', price: 'desde $12.000', color: '#1a1a1a' },
 ];
 
+type ProductItem = { name: string; tag: string; category: string; description: string; price: string; color: string };
+const allProducts: ProductItem[] = [
+  { name: 'Tarjetas personales', tag: 'Para presentarte', category: 'Impresion', description: 'Un buen papel dice mucho antes de que empieces a hablar.', price: 'desde $8.500', color: '#ff5722' },
+  { name: 'Volantes', tag: 'Para moverte', category: 'Impresion', description: 'Informacion clara, formato agil y una tirada que rinde.', price: 'desde $9.000', color: '#ff6e40' },
+  { name: 'Folders corporativos', tag: 'Institucional', category: 'Impresion', description: 'Organiza tus documentos con estilo que represente tu marca.', price: 'desde $15.000', color: '#ff5722' },
+  { name: 'Carteleria exterior', tag: 'Gran formato', category: 'Carteleria', description: 'Presencia de verdad para locales, eventos y campanas.', price: 'desde $12.000', color: '#1a1a1a' },
+  { name: 'Rotulos luminosos', tag: 'Exterior', category: 'Carteleria', description: 'Tu marca visible dia y noche, con acabado profesional.', price: 'desde $25.000', color: '#1a1a1a' },
+  { name: 'Lona impresion', tag: 'Gran formato', category: 'Carteleria', description: 'Gran formato con calidad que resiste intemperie y tiempo.', price: 'desde $8.000', color: '#2a1a1a' },
+  { name: 'Stickers vinilo', tag: 'Mas pedido', category: 'Stickers', description: 'Cortados a medida para que tu marca aparezca donde quieras.', price: 'desde $5.000', color: '#ff5722' },
+  { name: 'Calcos decorativos', tag: 'Interior', category: 'Stickers', description: 'Transforma paredes, vidrios y superficies con tu identidad.', price: 'desde $7.000', color: '#ff6e40' },
+  { name: 'Vinilo microperforado', tag: 'Vidrieras', category: 'Vinilos', description: 'Publicidad en vidrio que no bloquea la luz natural.', price: 'desde $9.500', color: '#0a1a1a' },
+  { name: 'Plotter vehicular', tag: 'Movil', category: 'Vinilos', description: 'Transforma tu auto o camioneta en un medio de publicidad 24/7.', price: 'desde $18.000', color: '#1a0a1a' },
+  { name: 'Etiquetas adhesivas', tag: 'Produccion', category: 'Impresion', description: 'Etiquetas con corte preciso para productos, envases y mas.', price: 'desde $4.500', color: '#ff5722' },
+  { name: 'Packaging boxes', tag: 'Empaque', category: 'Packaging', description: 'Cajas personalizadas que hacen que tu producto destaque.', price: 'desde $20.000', color: '#2a1a0a' },
+  { name: 'Banners rollup', tag: 'Eventos', category: 'Carteleria', description: 'Setup rapido, impacto visual. Ideal para ferias y presentaciones.', price: 'desde $14.000', color: '#1a1a1a' },
+  { name: 'Diseno de marca', tag: 'Identidad', category: 'Diseno', description: 'Logo, paleta de colores y manial que cuenten tu historia.', price: 'desde $45.000', color: '#0a0a1a' },
+];
+
 const categories = ['Todos', 'Impresion', 'Carteleria', 'Vinilos', 'Stickers', 'Diseno', 'Packaging'];
 const navLinks = [
-  ['Inicio', '#inicio'],
-  ['Servicios', '#servicios'],
-  ['Trabajos', '#trabajos'],
-  ['Productos', '#productos'],
-  ['Sobre nosotros', '#nosotros'],
-  ['Contacto', '#contacto'],
+  ['Inicio', '/'],
+  ['Servicios', '/#servicios'],
+  ['Trabajos', '/#trabajos'],
+  ['Productos', '/productos'],
+  ['Sobre nosotros', '/#nosotros'],
+  ['Contacto', '/#contacto'],
 ];
 
 // ===== COMPONENTS =====
@@ -291,7 +310,6 @@ function Services() {
         <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Lo que hacemos</div>
         <div className="services-header">
           <h2 className="section-title" data-testid="text-services-title">Servicios<br /><span>que dejan marca.</span></h2>
-          <a href="#presupuesto" className="button button--outline">Ver todos los servicios <ArrowUpRight size={15} /></a>
         </div>
         <div className="services-grid">
           {services.map((service) => (
@@ -364,9 +382,6 @@ function Works() {
           ))}
         </div>
         {filtered.length === 0 && <div className="work-empty" data-testid="empty-work">Todavia no hay trabajos en esta categoria.</div>}
-        <div style={{ textAlign: 'center', marginTop: '40px' }}>
-          <a href="#trabajos" className="button button--outline">Ver mas trabajos <ArrowUpRight size={15} /></a>
-        </div>
       </div>
     </section>
   );
@@ -379,7 +394,7 @@ function Products() {
         <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Destacados</div>
         <div className="products-header">
           <h2 className="section-title" data-testid="text-products-title">Productos<br /><span>que mas elegis.</span></h2>
-          <a href="#presupuesto" className="button" style={{ background: '#ff5722', color: '#0d0d0d' }}>Ver todos los productos <ArrowUpRight size={15} /></a>
+          <Link to="/productos" className="button" style={{ background: '#ff5722', color: '#0d0d0d' }}>Ver todos los productos <ArrowUpRight size={15} /></Link>
         </div>
         <p className="products-subtitle">Los productos mas solicitados por nuestros clientes.</p>
         <div className="products-grid">
@@ -389,6 +404,7 @@ function Products() {
                 <span style={{ color: `${product.color}30`, fontSize: '36px' }}>{product.name.charAt(0)}</span>
               </div>
               <div className="product-card__body">
+                <span className="product-card__tag">{product.tag}</span>
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
               </div>
@@ -655,8 +671,88 @@ function Home() {
   );
 }
 
+function Productos() {
+  const [filter, setFilter] = useState('Todos');
+  const productCategories = ['Todos', 'Impresion', 'Carteleria', 'Vinilos', 'Stickers', 'Diseno', 'Packaging'];
+  const filtered = filter === 'Todos' ? allProducts : allProducts.filter((p) => p.category === filter);
+  const [location] = useLocation();
+
+  useEffect(() => { window.scrollTo(0, 0); }, [location]);
+
+  useEffect(() => {
+    const cards = document.querySelectorAll('.products-page-grid .reveal-on-scroll');
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      }),
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
+    );
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [filter]);
+
+  const openWhatsApp = (productName: string) => {
+    const msg = encodeURIComponent(`Hola, me interesa saber el precio de: ${productName}`);
+    window.open(`https://wa.me/5492622419096?text=${msg}`, '_blank');
+  };
+
+  return (
+    <div className="site-shell">
+      <ScrollProgress />
+      <Header />
+      <main>
+        <section className="section products-page-hero">
+          <div className="container">
+            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', marginBottom: '32px', transition: 'color .2s' }}><ArrowDownRight size={14} style={{ transform: 'rotate(90deg)' }} /> Volver al inicio</Link>
+            <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Nuestros productos</div>
+            <h2 className="section-title" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>Todos los<br /><span>productos.</span></h2>
+            <p style={{ marginTop: '16px', color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.5', maxWidth: '480px' }}>Explora nuestra linea completa de productos graficos. Cada uno pensado para potenciar tu marca.</p>
+          </div>
+        </section>
+        <section className="section products-page-section">
+          <div className="container">
+            <div className="products-page-filters" role="group" aria-label="Filtrar productos">
+              {productCategories.map((cat) => (
+                <button type="button" key={cat} onClick={() => setFilter(cat)} className={filter === cat ? 'is-active' : ''}>{cat}</button>
+              ))}
+            </div>
+            <div className="products-page-grid">
+              {filtered.map((product, index) => (
+                <article key={product.name} className="product-page-card reveal-on-scroll" style={{ transitionDelay: `${(index % 4) * 0.08}s` }}>
+                  <div className="product-page-card__placeholder" style={{ background: `${product.color}12` }}>
+                    <span style={{ color: `${product.color}25`, fontSize: '48px', fontFamily: "'Archivo Black', sans-serif" }}>{product.name.charAt(0)}</span>
+                  </div>
+                  <div className="product-page-card__body">
+                    <span className="product-page-card__tag">{product.tag}</span>
+                    <h3>{product.name}</h3>
+                    <p>{product.description}</p>
+                  </div>
+                  <div className="product-page-card__footer">
+                    <span className="product-page-card__price">{product.price}</span>
+                    <button type="button" className="product-page-card__cta" onClick={() => openWhatsApp(product.name)} aria-label={`Consultar ${product.name} por WhatsApp`}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+            {filtered.length === 0 && <div className="work-empty">No hay productos en esta categoria.</div>}
+          </div>
+        </section>
+      </main>
+      <Footer />
+      <WhatsAppFAB />
+    </div>
+  );
+}
+
 function App() {
-  return <Home />;
+  return (
+    <Switch>
+      <Route path="/productos" component={Productos} />
+      <Route component={Home} />
+    </Switch>
+  );
 }
 
 export default App;
