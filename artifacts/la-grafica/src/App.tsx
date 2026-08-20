@@ -53,7 +53,7 @@ function useParallax(speed = 0.3) {
         const center = rect.top + rect.height / 2;
         const viewCenter = window.innerHeight / 2;
         const offset = (center - viewCenter) * speed;
-        el.style.transform = `translate3d(0, ${offset}px, 0)`;
+        el.style.transform = `translateY(${offset}px)`;
         ticking = false;
       });
     };
@@ -208,6 +208,13 @@ function Hero() {
 
   return (
     <section id="inicio" className="hero-section">
+      <div className="hero-sparks-layer">
+        <div className="hero-spark" style={{ top: '15%', left: '60%' }} />
+        <div className="hero-spark" style={{ top: '35%', left: '78%' }} />
+        <div className="hero-spark" style={{ top: '55%', left: '55%' }} />
+        <div className="hero-spark" style={{ top: '75%', left: '70%' }} />
+        <div className="hero-spark" style={{ top: '20%', left: '45%' }} />
+      </div>
       <div className="hero-section__inner">
         <div className="hero-copy">
           <p className="mono-label orange-text hero-copy__eyebrow">Hacemos que tus ideas</p>
@@ -227,20 +234,13 @@ function Hero() {
           </div>
         </div>
         <div className="hero-art" aria-label="Composicion de piezas graficas">
-          <div className="hero-art__sparks">
-            <div className="hero-spark" style={{ top: '10%', right: '42%' }} />
-            <div className="hero-spark" style={{ top: '25%', right: '18%' }} />
-            <div className="hero-spark" style={{ top: '50%', right: '60%' }} />
-            <div className="hero-spark" style={{ top: '70%', right: '35%' }} />
-            <div className="hero-spark" style={{ top: '15%', right: '70%' }} />
-          </div>
           <div className="hero-art__cards" ref={parallaxRef}>
             <div className="hero-card hero-card--1">
               <span className="hero-card__label" style={{ color: '#0d0d0d' }}>Impresion</span>
               <div className="hero-card__big-text" style={{ color: '#0d0d0d' }}>Tu Idea<br />En Grande</div>
             </div>
             <div className="hero-card hero-card--2">
-              <span className="hero-card__label">Neri Grafica</span>
+              <span className="hero-card__label" style={{ color: '#333' }}>Neri Grafica</span>
               <div className="hero-card__big-text" style={{ color: '#ff5722' }}>Print<br />Objects</div>
             </div>
             <div className="hero-card hero-card--3">
