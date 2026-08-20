@@ -5,6 +5,7 @@ import {
   Check,
   ChevronDown,
   Clock,
+  ExternalLink,
   Mail,
   MapPin,
   Menu,
@@ -435,7 +436,7 @@ function QuoteForm() {
       `Detalles: ${form.details || '-'}`,
     ];
     const msg = encodeURIComponent(lines.join('\n'));
-    window.open(`https://wa.me/5492622530837?text=${msg}`, '_blank');
+    window.open(`https://wa.me/5492622419096?text=${msg}`, '_blank');
     setSubmitted(true);
   };
   const resetForm = () => { setForm(initialQuote); setSubmitted(false); };
@@ -545,9 +546,9 @@ function Contact() {
               <span className="contact-info__icon"><Mail size={18} /></span>
               SERVICIOSLAGRAFICA@GMAIL.COM
             </a>
-            <a href="tel:+5492622530837" className="contact-info__item" data-testid="link-contact-phone">
+            <a href="tel:+5492622419096" className="contact-info__item" data-testid="link-contact-phone">
               <span className="contact-info__icon"><Phone size={18} /></span>
-              +54 9 2622 530837
+              +54 9 2622 419096
             </a>
             <div className="contact-info__item">
               <span className="contact-info__icon"><Clock size={18} /></span>
@@ -572,6 +573,7 @@ function Contact() {
           <div className="contact-map__label">
             Las Heras & Chile, M5569<br />Eugenio Bustos, Mendoza
           </div>
+          <span className="contact-map__hint"><ExternalLink size={12} /> Abrir en Maps</span>
         </a>
       </div>
     </section>
@@ -585,7 +587,7 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand"><Logo /><h2>Que se<br /><span>note.</span></h2></div>
           <div className="footer-column"><p>Enlaces</p>{navLinks.map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase()}`}>{label}</a>)}</div>
-          <div className="footer-column"><p>Contacto</p><a href="mailto:servicioslagrafica@gmail.com" data-testid="link-footer-email">servicioslagrafica@gmail.com</a><a href="tel:+5492622530837" data-testid="link-footer-phone">+54 9 2622 530837</a><a href="https://instagram.com/lagraficaeugeniobustos" data-testid="link-footer-instagram">@lagraficaeugeniobustos</a></div>
+          <div className="footer-column"><p>Contacto</p><a href="mailto:servicioslagrafica@gmail.com" data-testid="link-footer-email">servicioslagrafica@gmail.com</a><a href="tel:+5492622419096" data-testid="link-footer-phone">+54 9 2622 419096</a><a href="https://instagram.com/lagraficaeugeniobustos" data-testid="link-footer-instagram">@lagraficaeugeniobustos</a></div>
           <div className="footer-column"><p>Ubicacion</p><span>Las Heras & Chile, M5569<br />Eugenio Bustos, Mendoza</span><span>Lun-Vie - 10 a 18 hs</span></div>
         </div>
         <div className="footer-bottom"><span>&copy; La Grafica 2024</span><span>Diseno, impresion y calle</span><a href="#inicio" data-testid="link-back-top">Volver arriba <ArrowUpRight size={13} /></a></div>
@@ -603,7 +605,7 @@ function WhatsAppFAB() {
   }, []);
   return (
     <a
-      href="https://wa.me/5492622530837"
+      href="https://wa.me/5492622419096"
       className={`whatsapp-fab ${visible ? 'whatsapp-fab--visible' : ''}`}
       target="_blank"
       rel="noopener noreferrer"

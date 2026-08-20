@@ -944,6 +944,22 @@
   transition: border-color .3s ease;
 }
 .contact-map:hover { border-color: var(--orange); }
+.contact-map__hint {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font: 9px var(--app-font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: .6;
+  transition: opacity .3s ease, color .3s ease;
+  z-index: 3;
+}
+.contact-map:hover .contact-map__hint { opacity: 1; color: var(--orange); }
 .contact-map__grid {
   position: absolute;
   inset: 0;
