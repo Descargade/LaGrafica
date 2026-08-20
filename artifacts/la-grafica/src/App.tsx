@@ -515,29 +515,29 @@ function Contact() {
         <div>
           <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Pasa a saludar</div>
           <h2 className="section-title" data-testid="text-contact-title">Estamos<br /><span>aca.</span></h2>
-          <p className="contact-description">Entre Villa Crespo y Chacarita. Atendemos con mate, muestras de papel y tiempo para pensar.</p>
+          <p className="contact-description">Las Heras & Chile, M5569 Eugenio Bustos, Mendoza. Atendemos con mate, muestras de papel y tiempo para pensar.</p>
           <div className="contact-info__grid">
-            <a href="mailto:hola@lagrafica.ar" className="contact-info__item" data-testid="link-contact-email">
+            <a href="mailto:servicioslagrafica@gmail.com" className="contact-info__item" data-testid="link-contact-email">
               <span className="contact-info__icon"><Mail size={18} /></span>
-              HOLA@LAGRAFICA.AR
+              SERVICIOSLAGRAFICA@GMAIL.COM
             </a>
-            <a href="tel:+541148320126" className="contact-info__item" data-testid="link-contact-phone">
+            <a href="tel:+5492622419096" className="contact-info__item" data-testid="link-contact-phone">
               <span className="contact-info__icon"><Phone size={18} /></span>
-              +54 11 4832 0126
+              +54 9 2622 419096
             </a>
             <div className="contact-info__item">
               <span className="contact-info__icon"><Clock size={18} /></span>
               LUN A VIE - 10 A 18 H
             </div>
-            <a href="https://instagram.com/lagrafica.estudio" className="contact-info__item" data-testid="link-contact-instagram" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/lagraficaeugeniobustos" className="contact-info__item" data-testid="link-contact-instagram" target="_blank" rel="noopener noreferrer">
               <span className="contact-info__icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </span>
-              @LAGRAFICA.ESTUDIO
+              @LAGRAFICA.EUGENIOBUSTOS
             </a>
           </div>
         </div>
-        <div className="contact-map">
+        <a href="https://maps.google.com/?q=Las+Heras+Chile+M5569+Eugenio+Bustos+Mendoza+Argentina" target="_blank" rel="noopener noreferrer" className="contact-map" style={{textDecoration:'none'}} data-testid="link-map">
           <div className="contact-map__grid" />
           <div className="contact-map__lines" />
           <div className="contact-map__pin">
@@ -546,9 +546,9 @@ function Contact() {
             </div>
           </div>
           <div className="contact-map__label">
-            Av. Corrientes 5480<br />CABA - Buenos Aires
+            Las Heras & Chile, M5569<br />Eugenio Bustos, Mendoza
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );
@@ -561,8 +561,8 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand"><Logo /><h2>Que se<br /><span>note.</span></h2></div>
           <div className="footer-column"><p>Enlaces</p>{navLinks.map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase()}`}>{label}</a>)}</div>
-          <div className="footer-column"><p>Contacto</p><a href="mailto:hola@lagrafica.ar" data-testid="link-footer-email">hola@lagrafica.ar</a><a href="tel:+541148320126" data-testid="link-footer-phone">+54 11 4832 0126</a><a href="https://instagram.com/lagrafica.estudio" data-testid="link-footer-instagram">@lagrafica.estudio</a></div>
-          <div className="footer-column"><p>Ubicacion</p><span>Av. Corrientes 5480<br />CABA, Buenos Aires</span><span>Lun-Vie - 10 a 18 hs</span></div>
+          <div className="footer-column"><p>Contacto</p><a href="mailto:servicioslagrafica@gmail.com" data-testid="link-footer-email">servicioslagrafica@gmail.com</a><a href="tel:+5492622419096" data-testid="link-footer-phone">+54 9 2622 419096</a><a href="https://instagram.com/lagraficaeugeniobustos" data-testid="link-footer-instagram">@lagraficaeugeniobustos</a></div>
+          <div className="footer-column"><p>Ubicacion</p><span>Las Heras & Chile, M5569<br />Eugenio Bustos, Mendoza</span><span>Lun-Vie - 10 a 18 hs</span></div>
         </div>
         <div className="footer-bottom"><span>&copy; La Grafica 2024</span><span>Diseno, impresion y calle</span><a href="#inicio" data-testid="link-back-top">Volver arriba <ArrowUpRight size={13} /></a></div>
       </div>
@@ -579,7 +579,7 @@ function WhatsAppFAB() {
   }, []);
   return (
     <a
-      href="https://wa.me/541148320126"
+      href="https://wa.me/5492622419096"
       className={`whatsapp-fab ${visible ? 'whatsapp-fab--visible' : ''}`}
       target="_blank"
       rel="noopener noreferrer"

@@ -933,13 +933,17 @@
 .contact-info__item:hover .contact-info__icon { transform: scale(1.1); }
 .contact-map {
   position: relative;
+  display: block;
   width: 100%;
   height: 400px;
   background: var(--dark-elevated);
   border-radius: 10px;
   border: 1px solid var(--border-subtle);
   overflow: hidden;
+  cursor: pointer;
+  transition: border-color .3s ease;
 }
+.contact-map:hover { border-color: var(--orange); }
 .contact-map__grid {
   position: absolute;
   inset: 0;
@@ -1238,6 +1242,8 @@
 
   /* Works */
   .works-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .work-filters { width: 100%; }
+  .work-filters__scroll { width: 100%; }
   .work-filters::after { display: none; }
   .works-grid { grid-template-columns: 1fr; gap: 12px; }
   .work-card { min-height: 220px; }
@@ -1261,6 +1267,8 @@
 
   /* About */
   .about-layout { grid-template-columns: 1fr; gap: 40px; }
+  .about-layout .section-title { font-size: clamp(2rem, 10vw, 3rem); }
+  .about-description { max-width: 100%; }
   .about-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .stat-card { padding: 18px 10px; }
 
