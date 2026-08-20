@@ -322,6 +322,18 @@ function Works() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  useEffect(() => {
+    const cards = document.querySelectorAll('.works-grid .reveal-on-scroll');
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      }),
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
+    );
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [filter]);
+
   return (
     <section id="trabajos" className="section section--dark works-section">
       <div className="container">
@@ -412,6 +424,18 @@ function QuoteForm() {
   }, []);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const lines = [
+      'Hola, quiero un presupuesto desde la web.',
+      '',
+      `Necesito: ${form.need || '-'}`,
+      `Cantidad: ${form.quantity || '-'}`,
+      `Medidas: ${form.size || '-'}`,
+      `Material: ${form.material || '-'}`,
+      `Impresion: ${form.printType || '-'}`,
+      `Detalles: ${form.details || '-'}`,
+    ];
+    const msg = encodeURIComponent(lines.join('\n'));
+    window.open(`https://wa.me/5492622530837?text=${msg}`, '_blank');
     setSubmitted(true);
   };
   const resetForm = () => { setForm(initialQuote); setSubmitted(false); };
@@ -521,9 +545,9 @@ function Contact() {
               <span className="contact-info__icon"><Mail size={18} /></span>
               SERVICIOSLAGRAFICA@GMAIL.COM
             </a>
-            <a href="tel:+5492622419096" className="contact-info__item" data-testid="link-contact-phone">
+            <a href="tel:+5492622530837" className="contact-info__item" data-testid="link-contact-phone">
               <span className="contact-info__icon"><Phone size={18} /></span>
-              +54 9 2622 419096
+              +54 9 2622 530837
             </a>
             <div className="contact-info__item">
               <span className="contact-info__icon"><Clock size={18} /></span>
@@ -561,7 +585,7 @@ function Footer() {
         <div className="footer-top">
           <div className="footer-brand"><Logo /><h2>Que se<br /><span>note.</span></h2></div>
           <div className="footer-column"><p>Enlaces</p>{navLinks.map(([label, href]) => <a key={href} href={href} data-testid={`link-footer-${label.toLowerCase()}`}>{label}</a>)}</div>
-          <div className="footer-column"><p>Contacto</p><a href="mailto:servicioslagrafica@gmail.com" data-testid="link-footer-email">servicioslagrafica@gmail.com</a><a href="tel:+5492622419096" data-testid="link-footer-phone">+54 9 2622 419096</a><a href="https://instagram.com/lagraficaeugeniobustos" data-testid="link-footer-instagram">@lagraficaeugeniobustos</a></div>
+          <div className="footer-column"><p>Contacto</p><a href="mailto:servicioslagrafica@gmail.com" data-testid="link-footer-email">servicioslagrafica@gmail.com</a><a href="tel:+5492622530837" data-testid="link-footer-phone">+54 9 2622 530837</a><a href="https://instagram.com/lagraficaeugeniobustos" data-testid="link-footer-instagram">@lagraficaeugeniobustos</a></div>
           <div className="footer-column"><p>Ubicacion</p><span>Las Heras & Chile, M5569<br />Eugenio Bustos, Mendoza</span><span>Lun-Vie - 10 a 18 hs</span></div>
         </div>
         <div className="footer-bottom"><span>&copy; La Grafica 2024</span><span>Diseno, impresion y calle</span><a href="#inicio" data-testid="link-back-top">Volver arriba <ArrowUpRight size={13} /></a></div>
@@ -579,7 +603,7 @@ function WhatsAppFAB() {
   }, []);
   return (
     <a
-      href="https://wa.me/5492622419096"
+      href="https://wa.me/5492622530837"
       className={`whatsapp-fab ${visible ? 'whatsapp-fab--visible' : ''}`}
       target="_blank"
       rel="noopener noreferrer"
