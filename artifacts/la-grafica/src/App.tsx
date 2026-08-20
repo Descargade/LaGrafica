@@ -157,12 +157,12 @@ const allProducts: ProductItem[] = [
 
 const categories = ['Todos', 'Impresion', 'Carteleria', 'Vinilos', 'Stickers', 'Diseno', 'Packaging'];
 const navLinks = [
-  ['Inicio', '/'],
-  ['Servicios', '/#servicios'],
-  ['Trabajos', '/#trabajos'],
-  ['Productos', '/productos'],
-  ['Sobre nosotros', '/#nosotros'],
-  ['Contacto', '/#contacto'],
+  ['Inicio', '#inicio'],
+  ['Servicios', '#servicios'],
+  ['Trabajos', '#trabajos'],
+  ['Productos', '#productos'],
+  ['Sobre nosotros', '#nosotros'],
+  ['Contacto', '#contacto'],
 ];
 
 // ===== COMPONENTS =====
@@ -181,7 +181,7 @@ function Logo() {
   );
 }
 
-function Header() {
+function Header({ minimal = false }: { minimal?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -196,6 +196,19 @@ function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
+  if (minimal) {
+    return (
+      <header className="site-header site-header--scrolled">
+        <div className="site-header__inner">
+          <Logo />
+          <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', transition: 'color .2s', fontFamily: 'var(--app-font-mono)', letterSpacing: '.06em', textTransform: 'uppercase' }}>
+            <ArrowDownRight size={14} style={{ transform: 'rotate(90deg)' }} /> Inicio
+          </Link>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header className={`site-header ${scrolled ? 'site-header--scrolled' : ''}`}>
       <div className="site-header__inner">
@@ -205,9 +218,10 @@ function Header() {
             <a key={href} href={href} data-testid={`link-nav-${label.toLowerCase()}`}>{label}</a>
           ))}
         </nav>
-        <a href="#presupuesto" className="button button--orange header-cta" data-testid="link-header-quote">
-          Pedí tu presupuesto <ArrowUpRight size={15} />
-        </a>
+        <div className="header-ctas">
+          <Link to="/productos" className="button button--outline header-cta" data-testid="link-header-products">Ver productos <ArrowUpRight size={15} /></Link>
+          <a href="#presupuesto" className="button button--orange header-cta" data-testid="link-header-quote">Pedí tu presupuesto <ArrowUpRight size={15} /></a>
+        </div>
         <button
           type="button"
           onClick={() => setOpen((c) => !c)}
@@ -222,6 +236,7 @@ function Header() {
         {navLinks.map(([label, href]) => (
           <a key={href} href={href} onClick={() => setOpen(false)} data-testid={`link-mobile-${label.toLowerCase()}`}>{label}</a>
         ))}
+        <Link to="/productos" onClick={() => setOpen(false)} className="button button--outline" data-testid="link-mobile-products">Ver productos <ArrowUpRight size={15} /></Link>
         <a href="#presupuesto" onClick={() => setOpen(false)} className="button button--orange" data-testid="link-mobile-quote">Pedí tu presupuesto <ArrowUpRight size={15} /></a>
       </nav>
     </header>
@@ -699,11 +714,10 @@ function Productos() {
   return (
     <div className="site-shell">
       <ScrollProgress />
-      <Header />
+      <Header minimal />
       <main>
         <section className="section products-page-hero">
           <div className="container">
-            <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', fontSize: '13px', textDecoration: 'none', marginBottom: '32px', transition: 'color .2s' }}><ArrowDownRight size={14} style={{ transform: 'rotate(90deg)' }} /> Volver al inicio</Link>
             <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Nuestros productos</div>
             <h2 className="section-title" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>Todos los<br /><span>productos.</span></h2>
             <p style={{ marginTop: '16px', color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.5', maxWidth: '480px' }}>Explora nuestra linea completa de productos graficos. Cada uno pensado para potenciar tu marca.</p>

@@ -242,6 +242,7 @@
 .desktop-nav a:hover { color: var(--orange); }
 .desktop-nav a:hover::after { width: 100%; }
 .header-cta { min-height: 40px; padding: 0 16px; font-size: 9px; }
+.header-ctas { display: flex; align-items: center; gap: 10px; }
 .menu-button {
   display: none;
   width: 44px;
@@ -1326,7 +1327,7 @@
   .container { width: min(calc(100% - 32px), var(--max)); }
   .section { padding: 72px 0; }
   .site-header { padding: 14px 16px; }
-  .desktop-nav, .header-cta { display: none; }
+  .desktop-nav, .header-ctas { display: none; }
   .menu-button { display: grid; }
   .section-title { font-size: clamp(2.8rem, 14vw, 5.5rem); }
 
