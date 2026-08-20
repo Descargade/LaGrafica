@@ -365,10 +365,10 @@
 .hero-card:hover {
   box-shadow: 0 16px 48px rgba(255,87,34,.2), 0 8px 32px rgba(0,0,0,.4);
 }
-.hero-card--1 { left: 48%; top: 30%; width: 190px; height: 250px; background: var(--orange); transform: rotate(-3deg); z-index: 2; }
-.hero-card--2 { left: 22%; top: 38%; width: 180px; height: 230px; background: var(--cream); transform: rotate(3deg); z-index: 1; }
-.hero-card--3 { left: 68%; top: 55%; width: 170px; height: 220px; background: var(--dark-elevated); border: 1px solid var(--border-medium); transform: rotate(-4deg); z-index: 3; }
-.hero-card--4 { left: 40%; top: 78%; width: 160px; height: 200px; background: #1e1e1e; border: 1px solid var(--border-medium); transform: rotate(2deg); z-index: 2; }
+.hero-card--1 { left: 48%; top: 10%; width: 190px; height: 250px; background: var(--orange); transform: rotate(-3deg); z-index: 2; }
+.hero-card--2 { left: 22%; top: 18%; width: 180px; height: 230px; background: var(--cream); transform: rotate(3deg); z-index: 1; }
+.hero-card--3 { left: 68%; top: 35%; width: 170px; height: 220px; background: var(--dark-elevated); border: 1px solid var(--border-medium); transform: rotate(-4deg); z-index: 3; }
+.hero-card--4 { left: 40%; top: 52%; width: 160px; height: 200px; background: #1e1e1e; border: 1px solid var(--border-medium); transform: rotate(2deg); z-index: 2; }
 .hero-card__label {
   position: absolute;
   top: 16px;
@@ -1199,6 +1199,7 @@
   .hero-proof { gap: 10px 14px; margin-top: 20px; font-size: 8px; }
   .hero-art {
     position: relative;
+    height: auto !important;
     min-height: auto;
     margin-top: 28px;
   }
@@ -1249,10 +1250,10 @@
   .product-card__body p { font-size: 11px; }
 
   /* Quote */
-  .quote-layout { grid-template-columns: 1fr; gap: 40px; }
+  .quote-layout { grid-template-columns: 1fr; gap: 32px; }
   .quote-copy p:not(.mono-label) { max-width: 100%; }
-  .form-row { grid-template-columns: 1fr; gap: 16px; }
-  .quote-form-card { padding: 24px 20px; }
+  .form-row { grid-template-columns: 1fr; gap: 14px; }
+  .quote-form-card { padding: 20px 16px; overflow: hidden; }
 
   /* About */
   .about-layout { grid-template-columns: 1fr; gap: 40px; }
