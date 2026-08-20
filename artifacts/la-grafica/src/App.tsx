@@ -53,7 +53,7 @@ function useParallax(speed = 0.3) {
         const center = rect.top + rect.height / 2;
         const viewCenter = window.innerHeight / 2;
         const offset = (center - viewCenter) * speed;
-        el.style.transform = `translateY(${offset}px)`;
+        el.style.transform = `translate3d(0, ${offset}px, 0)`;
         ticking = false;
       });
     };

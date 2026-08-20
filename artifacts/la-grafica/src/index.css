@@ -348,11 +348,14 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  will-change: transform;
+  contain: layout style paint;
 }
 .hero-art__cards {
   position: relative;
   width: 100%;
   height: 100%;
+  will-change: transform;
 }
 .hero-card {
   position: absolute;
@@ -364,10 +367,10 @@
 .hero-card:hover {
   box-shadow: 0 16px 48px rgba(255,87,34,.2), 0 8px 32px rgba(0,0,0,.4);
 }
-.hero-card--1 { right: 10%; top: 5%; width: 260px; height: 340px; background: var(--orange); transform: rotate(3deg); z-index: 2; }
-.hero-card--2 { right: 30%; top: 15%; width: 220px; height: 290px; background: var(--cream); transform: rotate(-4deg); z-index: 1; }
-.hero-card--3 { right: 0; top: 35%; width: 200px; height: 260px; background: var(--dark-elevated); border: 1px solid var(--border-medium); transform: rotate(6deg); z-index: 3; }
-.hero-card--4 { right: 20%; bottom: 8%; width: 180px; height: 240px; background: #1e1e1e; border: 1px solid var(--border-medium); transform: rotate(-2deg); z-index: 2; }
+.hero-card--1 { left: 50%; top: 8%; width: 220px; height: 290px; background: var(--orange); transform: rotate(-3deg); z-index: 2; }
+.hero-card--2 { left: 30%; top: 12%; width: 200px; height: 260px; background: var(--cream); transform: rotate(3deg); z-index: 1; }
+.hero-card--3 { left: 65%; top: 30%; width: 180px; height: 240px; background: var(--dark-elevated); border: 1px solid var(--border-medium); transform: rotate(-5deg); z-index: 3; }
+.hero-card--4 { left: 42%; top: 55%; width: 170px; height: 220px; background: #1e1e1e; border: 1px solid var(--border-medium); transform: rotate(2deg); z-index: 2; }
 .hero-card__label {
   position: absolute;
   top: 16px;
@@ -395,14 +398,15 @@
   box-shadow: 0 0 12px var(--orange), 0 0 24px rgba(255,87,34,.4);
   animation: sparkFloat 5s ease-in-out infinite;
   z-index: 10;
+  will-change: transform;
 }
 .hero-spark:nth-child(2) { animation-delay: 1s; }
 .hero-spark:nth-child(3) { animation-delay: 2s; }
 .hero-spark:nth-child(4) { animation-delay: 3s; }
 .hero-spark:nth-child(5) { animation-delay: 1.5s; }
 @keyframes sparkFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
 }
 .hero-bottomline {
   position: absolute;
@@ -424,10 +428,11 @@
   gap: 8px;
   color: var(--orange);
   animation: bounceFloat 3s ease-in-out infinite;
+  will-change: transform;
 }
 @keyframes bounceFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(4px); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, 4px, 0); }
 }
 
 /* ===== SERVICES ===== */
@@ -981,10 +986,11 @@
   transform: translate(-50%, -100%);
   z-index: 2;
   animation: pinFloat 4s ease-in-out infinite;
+  will-change: transform;
 }
 @keyframes pinFloat {
-  0%, 100% { transform: translate(-50%, -100%) translateY(0); }
-  50% { transform: translate(-50%, -100%) translateY(-6px); }
+  0%, 100% { transform: translate3d(-50%, -100%, 0); }
+  50% { transform: translate3d(-50%, -106%, 0); }
 }
 .contact-map__pin-dot {
   width: 36px;
@@ -1081,7 +1087,7 @@
   border-radius: 50%;
   box-shadow: 0 4px 20px rgba(37,211,102,.4);
   cursor: pointer;
-  transition: transform .3s ease, opacity .3s ease, box-shadow .3s ease;
+  transition: opacity .3s ease, box-shadow .3s ease;
   opacity: 0;
   transform: scale(.5) translateY(20px);
   pointer-events: none;
@@ -1102,10 +1108,11 @@
   border-radius: 50%;
   border: 2px solid #25d366;
   animation: fabFloat 3.5s ease-in-out infinite;
+  will-change: transform;
 }
 @keyframes fabFloat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, 0, 0) scale(1.12); }
 }
 
 /* ===== SECTION DIVIDER ===== */
