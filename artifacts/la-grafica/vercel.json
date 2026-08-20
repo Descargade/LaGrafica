@@ -1,5 +1,8 @@
 {
   "installCommand": "npm install --ignore-scripts",
   "buildCommand": "npx vite build --config vite.config.ts",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
