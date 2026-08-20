@@ -1,3 +1,5 @@
 {
-  "installCommand": "npm install --ignore-scripts"
+  "installCommand": "npm install --ignore-scripts",
+  "buildCommand": "npx vite build --config vite.config.ts",
+  "outputDirectory": "dist"
 }
