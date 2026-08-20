@@ -1404,6 +1404,7 @@
   .product-card__body p { font-size: 11px; }
   .products-page-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .product-page-card__placeholder { height: 130px; }
+  .products-page-hero { padding-top: 110px; }
 
   /* Quote */
   .quote-layout { grid-template-columns: 1fr; gap: 32px; overflow: hidden; }
@@ -1460,6 +1461,7 @@
   .footer-brand { grid-column: span 1; }
   .footer-column:last-child { grid-column: span 1; }
   .products-page-grid { grid-template-columns: 1fr; gap: 12px; }
+  .products-page-hero { padding-top: 90px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

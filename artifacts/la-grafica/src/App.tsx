@@ -174,10 +174,10 @@ function ScrollProgress() {
 
 function Logo() {
   return (
-    <a href="#inicio" className="brand" data-testid="link-logo">
+    <Link to="/" className="brand" data-testid="link-logo">
       <span className="brand__mark">G</span>
       <span className="brand__name">LA<br />GRAFICA</span>
-    </a>
+    </Link>
   );
 }
 
