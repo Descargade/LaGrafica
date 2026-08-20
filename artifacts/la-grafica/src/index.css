@@ -365,10 +365,10 @@
 .hero-card:hover {
   box-shadow: 0 16px 48px rgba(255,87,34,.2), 0 8px 32px rgba(0,0,0,.4);
 }
-.hero-card--1 { left: 48%; top: 5%; width: 190px; height: 250px; background: var(--orange); transform: rotate(-3deg); z-index: 2; }
-.hero-card--2 { left: 22%; top: 12%; width: 180px; height: 230px; background: var(--cream); transform: rotate(3deg); z-index: 1; }
-.hero-card--3 { left: 68%; top: 25%; width: 170px; height: 220px; background: var(--dark-elevated); border: 1px solid var(--border-medium); transform: rotate(-4deg); z-index: 3; }
-.hero-card--4 { left: 40%; top: 52%; width: 160px; height: 200px; background: #1e1e1e; border: 1px solid var(--border-medium); transform: rotate(2deg); z-index: 2; }
+.hero-card--1 { left: 48%; top: 15%; width: 190px; height: 250px; background: var(--orange); transform: rotate(-3deg); z-index: 2; }
+.hero-card--2 { left: 22%; top: 22%; width: 180px; height: 230px; background: var(--cream); transform: rotate(3deg); z-index: 1; }
+.hero-card--3 { left: 68%; top: 35%; width: 170px; height: 220px; background: var(--dark-elevated); border: 1px solid var(--border-medium); transform: rotate(-4deg); z-index: 3; }
+.hero-card--4 { left: 40%; top: 60%; width: 160px; height: 200px; background: #1e1e1e; border: 1px solid var(--border-medium); transform: rotate(2deg); z-index: 2; }
 .hero-card__label {
   position: absolute;
   top: 16px;
@@ -1214,7 +1214,7 @@
     right: auto !important;
     bottom: auto !important;
     width: auto !important;
-    height: 150px;
+    height: 150px !important;
   }
   .hero-card--1 { order: 1; transform: rotate(2deg); }
   .hero-card--2 { order: 2; transform: rotate(-2deg); }
@@ -1282,7 +1282,7 @@
   .hero-copy h1 { font-size: clamp(2.2rem, 13vw, 3.8rem); }
   .hero-art { margin-top: 20px; }
   .hero-art__cards { gap: 8px; }
-  .hero-card { height: 130px; }
+  .hero-card { height: 130px !important; }
   .hero-card__label { font-size: 6px; top: 6px; left: 6px; }
   .hero-card__big-text { font-size: 14px; bottom: 8px; left: 8px; right: 8px; }
   .hero-bottomline { width: 100%; padding: 0 10px; }
@@ -1301,7 +1301,8 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+    animation-duration: 1s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .3s !important;
   }
 }
