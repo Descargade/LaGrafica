@@ -1251,10 +1251,12 @@
   .product-card__body p { font-size: 11px; }
 
   /* Quote */
-  .quote-layout { grid-template-columns: 1fr; gap: 32px; }
+  .quote-layout { grid-template-columns: 1fr; gap: 32px; overflow: hidden; }
+  .quote-copy { min-width: 0; overflow: hidden; }
   .quote-copy p:not(.mono-label) { max-width: 100%; }
   .form-row { grid-template-columns: 1fr; gap: 14px; }
-  .quote-form-card { padding: 20px 16px; overflow: hidden; max-width: 100%; }
+  .quote-form-card { padding: 20px 16px; overflow: hidden; max-width: 100%; min-width: 0; }
+  .quote-whatsapp { min-width: 0; overflow: hidden; }
 
   /* About */
   .about-layout { grid-template-columns: 1fr; gap: 40px; }
