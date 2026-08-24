@@ -736,6 +736,7 @@ function Productos() {
             <div className="products-page-grid">
               {filtered.map((product, index) => (
                 <article key={product.name} className="product-page-card reveal-on-scroll" style={{ transitionDelay: `${(index % 4) * 0.08}s` }}>
+                  <img src="/isotipo-white.png" alt="" className="product-page-card__badge" aria-hidden="true" />
                   <div className="product-page-card__placeholder" style={{ background: `${product.color}12` }}>
                     <img src="/isotipo-white.png" alt="" className="product-page-card__watermark" aria-hidden="true" />
                   </div>
