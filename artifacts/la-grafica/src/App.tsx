@@ -370,6 +370,7 @@ function Works() {
 
   return (
     <section id="trabajos" className="section section--dark works-section">
+      <img src="/isotipo-white.png" alt="" className="works-decor" aria-hidden="true" />
       <div className="container">
         <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Nuestros trabajos</div>
         <div className="works-header">

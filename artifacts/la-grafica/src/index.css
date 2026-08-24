@@ -500,7 +500,16 @@
 }
 
 /* ===== WORKS ===== */
-.works-section { background: var(--dark); position: relative; }
+.works-section { background: var(--dark); position: relative; overflow: hidden; }
+.works-decor {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 48px;
+  opacity: .06;
+  pointer-events: none;
+  z-index: 0;
+}
 .works-header {
   display: flex;
   justify-content: space-between;
@@ -1363,7 +1372,7 @@
   .section-title { font-size: clamp(2.8rem, 14vw, 5.5rem); }
 
   /* Decor - hide on mobile */
-  .hero-logo-decor, .products-hero-decor, .quote-decor { display: none; }
+  .hero-logo-decor, .products-hero-decor, .quote-decor, .works-decor { display: none; }
 
   /* Hero */
   .hero-section { min-height: auto; }
