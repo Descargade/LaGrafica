@@ -1460,6 +1460,11 @@
   .product-page-card__placeholder { height: 130px; }
   .products-page-hero { padding-top: 110px; }
 
+  /* Isotipo badges — más visibles en mobile */
+  .work-card__badge,
+  .product-page-card__badge { opacity: .35; width: 28px; }
+  .product-page-card__watermark { opacity: .08; width: 55%; }
+
   /* Quote */
   .quote-layout { grid-template-columns: 1fr; gap: 32px; overflow: hidden; }
   .quote-copy { min-width: 0; overflow: hidden; }
@@ -1517,6 +1522,8 @@
   .products-page-grid { grid-template-columns: 1fr; gap: 12px; }
   .products-page-hero { padding-top: 90px; }
   .product-page-card__watermark { width: 50%; }
+  .work-card__badge,
+  .product-page-card__badge { width: 22px; top: 8px; left: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
