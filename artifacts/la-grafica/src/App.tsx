@@ -175,8 +175,7 @@ function ScrollProgress() {
 function Logo() {
   return (
     <Link to="/" className="brand" data-testid="link-logo">
-      <span className="brand__mark">G</span>
-      <span className="brand__name">LA<br />GRAFICA</span>
+      <img src="/logo-white.png" alt="La Grafica" className="brand__img" />
     </Link>
   );
 }
@@ -255,6 +254,7 @@ function Hero() {
         <div className="hero-spark" style={{ top: '75%', left: '70%' }} />
         <div className="hero-spark" style={{ top: '20%', left: '45%' }} />
       </div>
+      <img src="/logo-orange.png" alt="" className="hero-logo-decor" aria-hidden="true" />
       <div className="hero-section__inner">
         <div className="hero-copy">
           <p className="mono-label orange-text hero-copy__eyebrow">Hacemos que tus ideas</p>
