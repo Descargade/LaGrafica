@@ -724,7 +724,18 @@
 }
 
 /* ===== QUOTE ===== */
-.quote-section { background: var(--dark); }
+.quote-section { background: var(--dark); position: relative; overflow: hidden; }
+.quote-decor {
+  position: absolute;
+  left: -8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35%;
+  max-width: 350px;
+  opacity: .04;
+  pointer-events: none;
+  z-index: 0;
+}
 .quote-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1157,9 +1168,22 @@
 
 /* ===== PRODUCTS PAGE ===== */
 .products-page-hero {
+  position: relative;
   background: linear-gradient(135deg, #FFD9B310 0%, transparent 60%);
   padding-top: 140px;
   padding-bottom: 40px;
+  overflow: hidden;
+}
+.products-hero-decor {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  max-width: 400px;
+  opacity: .05;
+  pointer-events: none;
+  z-index: 0;
 }
 .products-page-section { background: var(--dark); }
 .products-page-filters {
@@ -1216,7 +1240,15 @@
   background: var(--dark-elevated);
   transition: transform .4s ease;
   overflow: hidden;
+  position: relative;
 }
+.product-page-card__watermark {
+  width: 60%;
+  height: auto;
+  opacity: .04;
+  transition: opacity .4s ease, transform .4s ease;
+}
+.product-page-card:hover .product-page-card__watermark { opacity: .08; transform: scale(1.05); }
 .product-page-card:hover .product-page-card__placeholder { transform: scale(1.03); }
 .product-page-card__body {
   padding: 18px;
@@ -1329,6 +1361,9 @@
   .desktop-nav, .header-ctas { display: none; }
   .menu-button { display: grid; }
   .section-title { font-size: clamp(2.8rem, 14vw, 5.5rem); }
+
+  /* Decor - hide on mobile */
+  .hero-logo-decor, .products-hero-decor, .quote-decor { display: none; }
 
   /* Hero */
   .hero-section { min-height: auto; }
@@ -1462,6 +1497,7 @@
   .footer-column:last-child { grid-column: span 1; }
   .products-page-grid { grid-template-columns: 1fr; gap: 12px; }
   .products-page-hero { padding-top: 90px; }
+  .product-page-card__watermark { width: 50%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

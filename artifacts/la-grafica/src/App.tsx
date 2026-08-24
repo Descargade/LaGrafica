@@ -474,6 +474,7 @@ function QuoteForm() {
 
   return (
     <section id="presupuesto" className="section section--dark quote-section">
+      <img src="/isotipo-white.png" alt="" className="quote-decor" aria-hidden="true" />
       <div className="container quote-layout">
         <div className="quote-copy">
           <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Presupuesto</div>
@@ -717,6 +718,7 @@ function Productos() {
       <Header minimal />
       <main>
         <section className="section products-page-hero">
+          <img src="/isotipo-white.png" alt="" className="products-hero-decor" aria-hidden="true" />
           <div className="container">
             <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Nuestros productos</div>
             <h2 className="section-title" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>Todos los<br /><span>productos.</span></h2>
@@ -734,7 +736,7 @@ function Productos() {
               {filtered.map((product, index) => (
                 <article key={product.name} className="product-page-card reveal-on-scroll" style={{ transitionDelay: `${(index % 4) * 0.08}s` }}>
                   <div className="product-page-card__placeholder" style={{ background: `${product.color}12` }}>
-                    <span style={{ color: `${product.color}25`, fontSize: '48px', fontFamily: "'Archivo Black', sans-serif" }}>{product.name.charAt(0)}</span>
+                    <img src="/isotipo-white.png" alt="" className="product-page-card__watermark" aria-hidden="true" />
                   </div>
                   <div className="product-page-card__body">
                     <span className="product-page-card__tag">{product.tag}</span>
