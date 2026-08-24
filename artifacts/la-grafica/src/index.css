@@ -501,15 +501,6 @@
 
 /* ===== WORKS ===== */
 .works-section { background: var(--dark); position: relative; overflow: hidden; }
-.works-decor {
-  position: absolute;
-  top: 40px;
-  left: 20px;
-  width: 48px;
-  opacity: .06;
-  pointer-events: none;
-  z-index: 0;
-}
 .works-header {
   display: flex;
   justify-content: space-between;
@@ -580,6 +571,15 @@
   transition: transform .4s cubic-bezier(.23,1,.32,1);
 }
 .work-card:hover { transform: translateY(-6px); }
+.work-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 24px;
+  opacity: .15;
+  pointer-events: none;
+  z-index: 2;
+}
 .work-card__img {
   width: 100%;
   height: 100%;
@@ -1372,7 +1372,7 @@
   .section-title { font-size: clamp(2.8rem, 14vw, 5.5rem); }
 
   /* Decor - hide on mobile */
-  .hero-logo-decor, .products-hero-decor, .quote-decor, .works-decor { display: none; }
+  .hero-logo-decor, .products-hero-decor, .quote-decor { display: none; }
 
   /* Hero */
   .hero-section { min-height: auto; }

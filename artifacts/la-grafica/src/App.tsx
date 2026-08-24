@@ -370,7 +370,6 @@ function Works() {
 
   return (
     <section id="trabajos" className="section section--dark works-section">
-      <img src="/isotipo-white.png" alt="" className="works-decor" aria-hidden="true" />
       <div className="container">
         <div className="mono-label orange-text" style={{ marginBottom: '12px' }}>Nuestros trabajos</div>
         <div className="works-header">
@@ -388,6 +387,7 @@ function Works() {
         <div className="works-grid">
           {filtered.map((work) => (
             <article key={work.title} className="work-card reveal-on-scroll" data-testid={`card-work-${work.title}`}>
+              <img src="/isotipo-white.png" alt="" className="work-card__badge" aria-hidden="true" />
               <div className="work-card__placeholder" style={{ background: work.color }}>{work.title.charAt(0)}</div>
               <div className="work-card__overlay">
                 <span className="work-card__category">{work.category}</span>
